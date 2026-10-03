@@ -105,7 +105,10 @@ export const pullRuns = sqliteTable(
     /** Europe PMC `hitCount` for the query, once the first page is in. */
     hitCount: integer("hit_count"),
     fetched: integer("fetched").notNull().default(0),
+    /** Papers not in the database at all before this pull. */
     inserted: integer("inserted").notNull().default(0),
+    /** Papers newly linked to this search, including ones another search already stored. */
+    newMatches: integer("new_matches").notNull().default(0),
     status: text("status", { enum: pullRunStatuses }).notNull().default("running"),
     error: text("error"),
   },

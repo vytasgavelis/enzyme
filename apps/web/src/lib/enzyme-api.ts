@@ -1,9 +1,8 @@
 import type { FeedPage, FeedQuery, PullRun, SavedSearch, SavedSearchInput } from "@enzyme/shared";
 
 /**
- * Everything the UI needs from the API for searches, pulls and the feed. Implemented by the
- * mock today; the real implementation wraps the typed Hono client (`./api`) with the same
- * signatures, so components and hooks don't change.
+ * Everything the UI needs from the API for searches, pulls and the feed. `./http-api` implements
+ * it over the typed Hono client; `./mock-api` in the browser (`VITE_MOCK_API=1`).
  *
  * Endpoint each method maps to (T-4/T-5):
  * - listSearches     GET    /api/searches

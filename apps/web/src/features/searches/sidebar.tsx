@@ -6,7 +6,7 @@ import { NavLink, useMatch, useNavigate } from "react-router";
 import { Pill } from "@/components/pill";
 import { Button } from "@/components/ui/button";
 import { resetMockData } from "@/lib/mock-api";
-import { enzymeApi, useSearches } from "@/lib/queries";
+import { enzymeApi, useSearches, usingMockApi } from "@/lib/queries";
 import { SearchDialog } from "./search-dialog";
 
 export function Sidebar() {
@@ -58,23 +58,25 @@ export function Sidebar() {
         )}
       </nav>
 
-      <div className="flex items-center justify-between border-t px-5 py-2.5 text-muted-foreground text-xs">
-        <span>Prototype · mock data</span>
-        <Button
-          type="button"
-          size="xs"
-          variant="ghost"
-          className="text-muted-foreground"
-          onClick={() => {
-            resetMockData();
-            sessionStorage.clear();
-            // Full reload so no in-memory state (query cache, mark-viewed calls) survives.
-            window.location.assign("/");
-          }}
-        >
-          <RotateCcw /> Reset
-        </Button>
-      </div>
+      {usingMockApi && (
+        <div className="flex items-center justify-between border-t px-5 py-2.5 text-muted-foreground text-xs">
+          <span>Prototype · mock data</span>
+          <Button
+            type="button"
+            size="xs"
+            variant="ghost"
+            className="text-muted-foreground"
+            onClick={() => {
+              resetMockData();
+              sessionStorage.clear();
+              // Full reload so no in-memory state (query cache, mark-viewed calls) survives.
+              window.location.assign("/");
+            }}
+          >
+            <RotateCcw /> Reset
+          </Button>
+        </div>
+      )}
 
       <SearchDialog
         open={adding}

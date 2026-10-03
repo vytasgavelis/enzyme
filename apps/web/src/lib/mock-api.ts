@@ -1,10 +1,8 @@
 /**
- * PROTOTYPE: an in-browser stand-in for the saved-search, pull and feed endpoints (T-4/T-5),
- * so the UI can be agreed before the server exists. Implements `EnzymeApi` from `./enzyme-api`
- * using real Europe PMC records recorded into `mocks/europepmc-pools.json`. State lives in
- * localStorage; `resetMockData()` restores the seed.
- *
- * Replace with an `hc<AppType>` implementation of `EnzymeApi` once T-4/T-5 land.
+ * An in-browser stand-in for the saved-search, pull and feed endpoints (T-4/T-5), used when
+ * `VITE_MOCK_API=1`; the app talks to the server through `./http-api` otherwise. Implements
+ * `EnzymeApi` from `./enzyme-api` using real Europe PMC records recorded into
+ * `mocks/europepmc-pools.json`. State lives in localStorage; `resetMockData()` restores the seed.
  */
 import {
   deriveSpecies,
