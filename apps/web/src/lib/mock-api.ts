@@ -331,6 +331,7 @@ export const mockApi: EnzymeApi = {
           isRetracted: isRetracted(p.pubTypes),
           firstMatchedAt: l.firstMatchedAt,
           isNew: f.newSince ? l.firstMatchedAt > f.newSince : false,
+          card: null,
         };
       });
 
@@ -370,5 +371,10 @@ export const mockApi: EnzymeApi = {
       page: f.page,
       pageSize: f.pageSize,
     };
+  },
+
+  async generateCard() {
+    await sleep(300);
+    throw new ApiError(501, "Key facts need the real API; the mock can't run the model.");
   },
 };

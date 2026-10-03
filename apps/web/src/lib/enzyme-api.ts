@@ -1,4 +1,11 @@
-import type { FeedPage, FeedQuery, PullRun, SavedSearch, SavedSearchInput } from "@enzyme/shared";
+import type {
+  FeedPage,
+  FeedQuery,
+  PaperCard,
+  PullRun,
+  SavedSearch,
+  SavedSearchInput,
+} from "@enzyme/shared";
 
 /**
  * Everything the UI needs from the API for searches, pulls and the feed. `./http-api` implements
@@ -13,6 +20,7 @@ import type { FeedPage, FeedQuery, PullRun, SavedSearch, SavedSearchInput } from
  * - startPull        POST   /api/searches/:id/pull     -> PullRun (202)
  * - getLatestRun     GET    /api/searches/:id/pull     -> PullRun | null
  * - getFeed          GET    /api/searches/:id/papers?<FeedQuery>
+ * - generateCard     POST   /api/papers/:id/card       -> PaperCard (201), the paper's new card
  */
 export interface EnzymeApi {
   listSearches(): Promise<SavedSearch[]>;
@@ -23,6 +31,7 @@ export interface EnzymeApi {
   startPull(id: number): Promise<PullRun>;
   getLatestRun(id: number): Promise<PullRun | null>;
   getFeed(id: number, query: FeedQuery): Promise<FeedPage>;
+  generateCard(paperId: number): Promise<PaperCard>;
 }
 
 export class ApiError extends Error {

@@ -1,13 +1,57 @@
-import { LoaderCircle, Pencil } from "lucide-react";
+import { LoaderCircle, Pencil, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { Button } from "@/components/ui/button";
 import { SearchDialog } from "@/features/searches/search-dialog";
 import { toFeedQuery, useFeedFilters } from "@/lib/feed-filters";
-import { useFeed, useNewSince, usePull, useSearches } from "@/lib/queries";
+import { useFeed, useNewSince, usePull, useSearches, useSummariseMany } from "@/lib/queries";
 import { FeedToolbar } from "./feed-toolbar";
 import { PaperRow } from "./paper-row";
 import { PullStatus } from "./pull-status";
+
+/** Papers "Summarise top N" takes from the top of the current, filtered feed (T-8). */
+const SUMMARISE_TOP = 10;
+
+function SummariseTop({
+  ids,
+  running,
+  progress,
+  onRun,
+}: {
+  ids: number[];
+  running: boolean;
+  progress: { done: number; failed: number; total: number } | null;
+  onRun: (ids: number[]) => void;
+}) {
+  if (running && progress) {
+    return (
+      <span className="flex items-center gap-1.5 text-muted-foreground text-xs">
+        <LoaderCircle className="size-3.5 animate-spin" />
+        Summarising {progress.done} of {progress.total}…
+      </span>
+    );
+  }
+  const batch = ids.slice(0, SUMMARISE_TOP);
+  return (
+    <div className="flex items-center gap-2">
+      {progress && progress.failed > 0 && (
+        <span className="text-red-700 text-xs">{progress.failed} failed</span>
+      )}
+      <Button
+        type="button"
+        size="xs"
+        variant="outline"
+        className="bg-white"
+        disabled={batch.length === 0}
+        onClick={() => onRun(batch)}
+        title="Generate key facts for the first papers in the feed below that don't have them yet"
+      >
+        <Sparkles />
+        {batch.length === 0 ? "All shown are summarised" : `Summarise top ${batch.length}`}
+      </Button>
+    </div>
+  );
+}
 
 export function FeedPage() {
   const id = Number(useParams().searchId);
@@ -26,6 +70,7 @@ function Feed({ searchId }: { searchId: number }) {
   const { filters, setFilters, reset, isDefault } = useFeedFilters();
   const { ready, newSince } = useNewSince(searchId);
   const { run, start } = usePull(searchId);
+  const summarise = useSummariseMany();
   const [editing, setEditing] = useState(false);
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
@@ -70,7 +115,15 @@ function Feed({ searchId }: { searchId: number }) {
             </div>
             <p className="mt-1 break-words font-mono text-stone-600 text-xs">{search.query}</p>
           </div>
-          <PullStatus run={run} starting={start.isPending} onPull={() => start.mutate()} />
+          <div className="flex shrink-0 flex-col items-end gap-2">
+            <PullStatus run={run} starting={start.isPending} onPull={() => start.mutate()} />
+            <SummariseTop
+              ids={items.filter((p) => !p.card && p.abstract).map((p) => p.id)}
+              running={summarise.running}
+              progress={summarise.progress}
+              onRun={(ids) => summarise.run(ids)}
+            />
+          </div>
         </div>
       </header>
 

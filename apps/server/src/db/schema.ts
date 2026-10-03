@@ -1,4 +1,4 @@
-import type { FullTextUrl } from "@enzyme/shared";
+import type { FullTextUrl, StudyCard } from "@enzyme/shared";
 import { sql } from "drizzle-orm";
 import {
   index,
@@ -115,8 +115,32 @@ export const pullRuns = sqliteTable(
   (t) => [index("pull_runs_search_idx").on(t.searchId, t.startedAt)],
 );
 
+/**
+ * Generated study cards (T-7). Regenerating adds a row; the newest per paper is the current
+ * card, and older rows stay as raw data for the model benchmark (EN-38).
+ */
+export const cards = sqliteTable(
+  "cards",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    paperId: integer("paper_id")
+      .notNull()
+      .references(() => papers.id, { onDelete: "cascade" }),
+    /** Provider and model, e.g. `google/gemma-4-26b-a4b-it`. */
+    modelId: text("model_id").notNull(),
+    /** The checked card (`checkCard`), quotes verified against the abstract. */
+    card: text("card", { mode: "json" }).$type<StudyCard>().notNull(),
+    latencyMs: integer("latency_ms").notNull(),
+    inputTokens: integer("input_tokens"),
+    outputTokens: integer("output_tokens"),
+    createdAt: timestamp("created_at").notNull().default(nowMs),
+  },
+  (t) => [index("cards_paper_idx").on(t.paperId, t.createdAt)],
+);
+
 export type SavedSearch = typeof savedSearches.$inferSelect;
 export type Paper = typeof papers.$inferSelect;
 export type NewPaper = typeof papers.$inferInsert;
 export type SearchPaper = typeof searchPapers.$inferSelect;
 export type PullRun = typeof pullRuns.$inferSelect;
+export type CardRow = typeof cards.$inferSelect;

@@ -1,4 +1,5 @@
-import type { PaperInput } from "@enzyme/shared";
+import type { CardOutput, PaperInput } from "@enzyme/shared";
+import type { CardGeneration, GenerateCard } from "../ai/card-agent.js";
 import { createApp } from "../app.js";
 import { createDb, type Db, migrateDb } from "../db/client.js";
 import type { EuropePmcClient, EuropePmcRecord } from "../sources/europepmc.js";
@@ -62,15 +63,65 @@ export function fakeEuropePmc(results: Record<string, PaperInput[]>) {
   return fake;
 }
 
+/**
+ * Model stand-in: answers with `next` (or what `respond` builds from the input), records the
+ * inputs, and throws `fail` when set.
+ */
+export function fakeModel() {
+  const fake = {
+    calls: [] as { title: string; abstract: string }[],
+    fail: null as Error | null,
+    gate: null as Promise<void> | null,
+    respond: (_input: { title: string; abstract: string }): CardOutput => unknownCard(),
+    generate: (async (input) => {
+      fake.calls.push(input);
+      if (fake.gate) await fake.gate;
+      if (fake.fail) throw fake.fail;
+      return {
+        output: fake.respond(input),
+        modelId: "fake/model",
+        latencyMs: 12,
+        inputTokens: 100,
+        outputTokens: 50,
+      } satisfies CardGeneration;
+    }) as GenerateCard,
+  };
+  return fake;
+}
+
+/** Model output with every field unknown; spread over it to state some. */
+export function unknownCard(overrides: Partial<CardOutput> = {}): CardOutput {
+  const unknown = { value: null, quote: null, status: "unknown" as const };
+  return {
+    design: unknown,
+    population: unknown,
+    sampleSize: unknown,
+    interventionOrExposure: unknown,
+    comparator: unknown,
+    doseOrRegimen: unknown,
+    duration: unknown,
+    primaryOutcome: unknown,
+    resultDirection: unknown,
+    effectSummary: unknown,
+    limitations: unknown,
+    fundingOrCoi: unknown,
+    takeaway: "Takeaway.",
+    plainSummary: "Summary.",
+    ...overrides,
+  };
+}
+
 /** The app on a fresh in-memory database, with helpers to call it and wait for pulls. */
 export function testApp(results: Record<string, PaperInput[]> = {}) {
   const db: Db = createDb(":memory:");
   migrateDb(db);
   const europePmc = fakeEuropePmc(results);
+  const model = fakeModel();
   const pulls: Promise<void>[] = [];
   const app = createApp({
     db,
     europePmc,
+    generateCard: model.generate,
     logRequests: false,
     onPullStarted: (done) => pulls.push(done),
   });
@@ -89,6 +140,7 @@ export function testApp(results: Record<string, PaperInput[]> = {}) {
     db,
     app,
     europePmc,
+    model,
     call,
     /** Waits for every pull started so far. */
     settlePulls: () => Promise.all(pulls),

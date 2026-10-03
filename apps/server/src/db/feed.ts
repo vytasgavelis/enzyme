@@ -10,6 +10,7 @@ import {
   tiers,
 } from "@enzyme/shared";
 import { and, count, eq, gt, gte, inArray, type SQL, sql } from "drizzle-orm";
+import { latestCards } from "./cards.js";
 import type { Db } from "./client.js";
 import { papers, searchPapers } from "./schema.js";
 
@@ -119,6 +120,10 @@ export function getFeed(db: Db, searchId: number, f: FeedQueryParsed): FeedPage 
         .all()
     : [];
   const byId = new Map(full.map((p) => [p.id, p]));
+  const cardsById = latestCards(
+    db,
+    pageItems.map((c) => c.id),
+  );
 
   const items: FeedPaper[] = pageItems.flatMap((c) => {
     const p = byId.get(c.id);
@@ -149,6 +154,7 @@ export function getFeed(db: Db, searchId: number, f: FeedQueryParsed): FeedPage 
       isRetracted: c.isRetracted,
       firstMatchedAt: c.firstMatchedAt.toISOString(),
       isNew: newSince !== null && c.firstMatchedAt > newSince,
+      card: cardsById.get(p.id) ?? null,
     };
   });
 
