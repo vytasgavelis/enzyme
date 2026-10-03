@@ -1,25 +1,17 @@
-import { mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
+import { createDb, migrateDb } from "./client.js";
 import * as schema from "./schema.js";
 
-const here = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(here, "../../../..");
-const dbPath = resolve(repoRoot, process.env.DATABASE_PATH ?? "data/enzyme.db");
-mkdirSync(dirname(dbPath), { recursive: true });
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
 
-const sqlite = new Database(dbPath);
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
+/** The app database. Tests should use `createDb(":memory:")` from `./client.js` instead. */
+export const db = createDb(resolve(repoRoot, process.env.DATABASE_PATH ?? "data/enzyme.db"));
 
-export const db = drizzle(sqlite, { schema });
-
-/** Apply pending migrations from apps/server/drizzle. Called once at startup. */
+/** Apply pending migrations to the app database. Called once at startup. */
 export function runMigrations() {
-  migrate(db, { migrationsFolder: resolve(here, "../../drizzle") });
+  migrateDb(db);
 }
 
+export type { Db } from "./client.js";
 export { schema };
