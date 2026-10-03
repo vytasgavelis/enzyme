@@ -8,10 +8,12 @@ import {
 } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import type { EnzymeApi } from "./enzyme-api";
+import { httpApi } from "./http-api";
 import { mockApi } from "./mock-api";
 
-/** Swap for the Hono-client implementation once T-4/T-5 exist. */
-export const enzymeApi: EnzymeApi = mockApi;
+/** `VITE_MOCK_API=1` runs the UI on the in-browser mock instead of the server. */
+export const usingMockApi = import.meta.env.VITE_MOCK_API === "1";
+export const enzymeApi: EnzymeApi = usingMockApi ? mockApi : httpApi;
 
 const keys = {
   searches: ["searches"] as const,

@@ -1,7 +1,7 @@
 /**
  * HTTP contract between the web UI and the API for saved searches, pulls and the feed
- * (T-4, T-5, T-6). The web UI currently runs against an in-browser mock of this contract
- * (`apps/web/src/lib/mock-api.ts`); the server implements the same shapes.
+ * (T-4, T-5, T-6). Implemented by `apps/server/src/routes/searches.ts`, and in the browser by
+ * the mock in `apps/web/src/lib/mock-api.ts` (`VITE_MOCK_API=1`).
  *
  * Timestamps are ISO 8601 strings on the wire.
  */
@@ -89,8 +89,11 @@ const flag = z
 export const feedQuerySchema = z.object({
   /** Full-text search over title and abstract (FTS5). */
   q: z.string().trim().max(200).default(""),
-  /** Only papers whose evidence tier is in this list; empty means all. */
-  tiers: z.array(z.enum(tiers)).default([]),
+  /**
+   * Only papers whose evidence tier is in this list; empty means all. Sent as a repeated query
+   * param (`tiers=rct&tiers=review`), which arrives as a plain string when there is only one.
+   */
+  tiers: z.union([z.enum(tiers).transform((t) => [t]), z.array(z.enum(tiers))]).default([]),
   /** Publication date lower bound, `YYYY-MM-DD`. */
   from: z
     .string()

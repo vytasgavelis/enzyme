@@ -1,0 +1,1 @@
+ALTER TABLE `pull_runs` ADD `new_matches` integer DEFAULT 0 NOT NULL;
