@@ -18,7 +18,10 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: 5173,
+      port: Number(env.WEB_PORT ?? 5173),
+      strictPort: true,
+      // e.g. WEB_HOST=0.0.0.0 to reach the dev server from outside a VM
+      host: env.WEB_HOST ?? "localhost",
       proxy: {
         "/api": `http://localhost:${apiPort}`,
       },

@@ -1,17 +1,119 @@
+import type { FullTextUrl } from "@enzyme/shared";
 import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  index,
+  integer,
+  primaryKey,
+  sqliteTable,
+  text,
+  uniqueIndex,
+} from "drizzle-orm/sqlite-core";
 
-/**
- * Placeholder table. Replace with the real data model after feature analysis.
- * Note: the FTS5 virtual table lives in a hand-written migration, not here —
- * Drizzle does not model virtual tables.
- */
-export const papers = sqliteTable("papers", {
-  pmid: text("pmid").primaryKey(),
-  title: text("title").notNull(),
-  abstract: text("abstract"),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull().default(sql`(unixepoch())`),
+/** Milliseconds since epoch, so "new since last viewed" can compare within the same second. */
+const nowMs = sql`(cast(unixepoch('subsec') * 1000 as integer))`;
+const timestamp = (name: string) => integer(name, { mode: "timestamp_ms" });
+
+/** A saved Europe PMC query the user pulls papers for (EN-1). */
+export const savedSearches = sqliteTable("saved_searches", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  query: text("query").notNull(),
+  createdAt: timestamp("created_at").notNull().default(nowMs),
+  lastRunAt: timestamp("last_run_at"),
+  lastViewedAt: timestamp("last_viewed_at"),
 });
 
+/**
+ * One row per paper, merged across sources (see `upsertPaper`). Nullable columns follow
+ * `PaperInput`: `null` means the source didn't say.
+ *
+ * `title`/`abstract` keep the source HTML; `title_text`/`abstract_text` are the
+ * `stripHtml` copies that the FTS5 table `papers_fts` indexes. The FTS table and its
+ * triggers live in a hand-written migration because Drizzle does not model virtual tables.
+ */
+export const papers = sqliteTable(
+  "papers",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    /** Source and id of the record that first created this row. */
+    source: text("source").notNull(),
+    sourceId: text("source_id").notNull(),
+    pmid: text("pmid"),
+    pmcid: text("pmcid"),
+    /** Normalised: lowercase, no `https://doi.org/` prefix. */
+    doi: text("doi"),
+    title: text("title"),
+    abstract: text("abstract"),
+    titleText: text("title_text"),
+    abstractText: text("abstract_text"),
+    authors: text("authors"),
+    journal: text("journal"),
+    /** ISO date `YYYY-MM-DD`. */
+    pubDate: text("pub_date"),
+    pubYear: integer("pub_year"),
+    pubTypes: text("pub_types", { mode: "json" }).$type<string[]>(),
+    meshHeadings: text("mesh_headings", { mode: "json" }).$type<string[]>(),
+    keywords: text("keywords", { mode: "json" }).$type<string[]>(),
+    citedByCount: integer("cited_by_count"),
+    isOpenAccess: integer("is_open_access", { mode: "boolean" }),
+    isPreprint: integer("is_preprint", { mode: "boolean" }).notNull(),
+    fullTextUrls: text("full_text_urls", { mode: "json" }).$type<FullTextUrl[]>(),
+    /** The last source record merged into this row, kept so re-mapping needs no refetch. */
+    raw: text("raw", { mode: "json" }).notNull(),
+    firstSeenAt: timestamp("first_seen_at").notNull().default(nowMs),
+    updatedAt: timestamp("updated_at").notNull().default(nowMs),
+  },
+  (t) => [
+    uniqueIndex("papers_source_uq").on(t.source, t.sourceId),
+    uniqueIndex("papers_pmid_uq").on(t.pmid),
+    uniqueIndex("papers_doi_uq").on(t.doi),
+    index("papers_pub_date_idx").on(t.pubDate),
+  ],
+);
+
+/** Which saved search matched which paper, and when it first did (EN-19). */
+export const searchPapers = sqliteTable(
+  "search_papers",
+  {
+    searchId: integer("search_id")
+      .notNull()
+      .references(() => savedSearches.id, { onDelete: "cascade" }),
+    paperId: integer("paper_id")
+      .notNull()
+      .references(() => papers.id, { onDelete: "cascade" }),
+    firstMatchedAt: timestamp("first_matched_at").notNull().default(nowMs),
+  },
+  (t) => [
+    primaryKey({ columns: [t.searchId, t.paperId] }),
+    index("search_papers_paper_idx").on(t.paperId),
+  ],
+);
+
+export const pullRunStatuses = ["running", "succeeded", "failed"] as const;
+export type PullRunStatus = (typeof pullRunStatuses)[number];
+
+/** One pull of a saved search; counters are updated while it runs (EN-22). */
+export const pullRuns = sqliteTable(
+  "pull_runs",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    searchId: integer("search_id")
+      .notNull()
+      .references(() => savedSearches.id, { onDelete: "cascade" }),
+    startedAt: timestamp("started_at").notNull().default(nowMs),
+    finishedAt: timestamp("finished_at"),
+    /** Europe PMC `hitCount` for the query, once the first page is in. */
+    hitCount: integer("hit_count"),
+    fetched: integer("fetched").notNull().default(0),
+    inserted: integer("inserted").notNull().default(0),
+    status: text("status", { enum: pullRunStatuses }).notNull().default("running"),
+    error: text("error"),
+  },
+  (t) => [index("pull_runs_search_idx").on(t.searchId, t.startedAt)],
+);
+
+export type SavedSearch = typeof savedSearches.$inferSelect;
 export type Paper = typeof papers.$inferSelect;
 export type NewPaper = typeof papers.$inferInsert;
+export type SearchPaper = typeof searchPapers.$inferSelect;
+export type PullRun = typeof pullRuns.$inferSelect;

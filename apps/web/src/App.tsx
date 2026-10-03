@@ -1,16 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { stripHtml } from "@enzyme/shared";
+import { useQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { api } from "@/lib/api";
 
 export default function App() {
-  const queryClient = useQueryClient();
-  const [pmid, setPmid] = useState("");
-  const [title, setTitle] = useState("");
-
   const health = useQuery({
     queryKey: ["health"],
     queryFn: async () => (await api.api.health.$get()).json(),
@@ -19,19 +13,6 @@ export default function App() {
   const papers = useQuery({
     queryKey: ["papers"],
     queryFn: async () => (await api.api.papers.$get()).json(),
-  });
-
-  const addPaper = useMutation({
-    mutationFn: async () => {
-      const res = await api.api.papers.$post({ json: { pmid, title } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    },
-    onSuccess: () => {
-      setPmid("");
-      setTitle("");
-      queryClient.invalidateQueries({ queryKey: ["papers"] });
-    },
   });
 
   return (
@@ -45,48 +26,16 @@ export default function App() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Add a paper</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form
-            className="flex gap-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-              addPaper.mutate();
-            }}
-          >
-            <Input
-              className="w-32"
-              placeholder="PMID"
-              value={pmid}
-              onChange={(e) => setPmid(e.target.value)}
-            />
-            <Input
-              className="flex-1"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <Button type="submit" disabled={addPaper.isPending || !pmid || !title}>
-              Add
-            </Button>
-          </form>
-          {addPaper.isError && (
-            <p className="mt-2 text-destructive text-sm">{addPaper.error.message}</p>
-          )}
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
           <CardTitle>Papers</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="divide-y">
             {papers.data?.map((p) => (
-              <li key={p.pmid} className="py-2">
-                <span className="mr-2 font-mono text-muted-foreground text-xs">{p.pmid}</span>
-                {p.title}
+              <li key={p.id} className="py-2">
+                <span className="mr-2 font-mono text-muted-foreground text-xs">
+                  {p.pmid ?? p.sourceId}
+                </span>
+                {p.title === null ? "(untitled)" : stripHtml(p.title)}
               </li>
             ))}
             {papers.data?.length === 0 && (

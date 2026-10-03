@@ -1,36 +1,30 @@
 import { zValidator } from "@hono/zod-validator";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, getTableColumns } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
 import { db, schema } from "../db/index.js";
 
-/** Placeholder input for the demo page; goes away when T-3 replaces the papers table. */
-const placeholderPaperSchema = z.object({
-  pmid: z.string().min(1),
-  title: z.string().min(1),
-  abstract: z.string().optional(),
-});
+/** Everything except the raw source record and the FTS-only plain-text copies. */
+const {
+  raw: _raw,
+  titleText: _t,
+  abstractText: _a,
+  ...paperColumns
+} = getTableColumns(schema.papers);
 
+/** Placeholder read-only routes; T-5's feed API replaces the list. Papers arrive via pulls (T-4). */
 export const papersRoute = new Hono()
   .get("/", async (c) => {
-    const rows = await db.select().from(schema.papers).orderBy(desc(schema.papers.createdAt));
+    const rows = await db
+      .select(paperColumns)
+      .from(schema.papers)
+      .orderBy(desc(schema.papers.firstSeenAt))
+      .limit(100);
     return c.json(rows);
   })
-  .get("/:pmid", async (c) => {
-    const pmid = c.req.param("pmid");
-    const [row] = await db.select().from(schema.papers).where(eq(schema.papers.pmid, pmid));
+  .get("/:id", zValidator("param", z.object({ id: z.coerce.number().int() })), async (c) => {
+    const { id } = c.req.valid("param");
+    const [row] = await db.select(paperColumns).from(schema.papers).where(eq(schema.papers.id, id));
     if (!row) return c.json({ error: "not found" }, 404);
     return c.json(row);
-  })
-  .post("/", zValidator("json", placeholderPaperSchema), async (c) => {
-    const input = c.req.valid("json");
-    const [row] = await db
-      .insert(schema.papers)
-      .values(input)
-      .onConflictDoUpdate({
-        target: schema.papers.pmid,
-        set: { title: input.title, abstract: input.abstract },
-      })
-      .returning();
-    return c.json(row, 201);
   });
