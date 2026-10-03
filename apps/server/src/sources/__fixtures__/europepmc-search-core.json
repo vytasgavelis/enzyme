@@ -1,0 +1,1190 @@
+{
+  "version": "6.9",
+  "hitCount": 26518,
+  "nextCursorMark": "AoIIQFOVSSg1NjM0NDQ5Mg==",
+  "request": {
+    "queryString": "(peptides AND sleep) AND HAS_ABSTRACT:y",
+    "resultType": "core",
+    "cursorMark": "*",
+    "pageSize": 3,
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "id": "42715944",
+        "source": "MED",
+        "pmid": "42715944",
+        "doi": "10.1021/acs.jafc.6c03771",
+        "title": "Novel Sleep-Promoting Peptides from Sea Cucumbers Targeting the GABAa Receptor Identified by a Multitechnique Approach of Proteolysis Simulation, Molecular Docking, and Pharmacophore Modeling.",
+        "authorString": "Sun Y, Li Y, Ren M, Jin Y, Zhang M, Wu T.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Sun Y",
+              "lastName": "Sun",
+              "firstName": "Yuting",
+              "initials": "Y",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Li Y",
+              "lastName": "Li",
+              "firstName": "Yashi",
+              "initials": "Y",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Ren M",
+              "lastName": "Ren",
+              "firstName": "Mengfan",
+              "initials": "M",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Jin Y",
+              "lastName": "Jin",
+              "firstName": "Yan",
+              "initials": "Y",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-3981-7459"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Zhang M",
+              "lastName": "Zhang",
+              "firstName": "Min",
+              "initials": "M",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-8943-4002"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Wu T",
+              "lastName": "Wu",
+              "firstName": "Tao",
+              "initials": "T",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China."
+                  },
+                  {
+                    "affiliation": "School of Ocean and Environment, Tianjin University of Science & Technology, Tianjin300457, China."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "authorIdList": {
+          "authorId": [
+            {
+              "type": "ORCID",
+              "value": "0000-0002-8943-4002"
+            },
+            {
+              "type": "ORCID",
+              "value": "0000-0003-3981-7459"
+            }
+          ]
+        },
+        "journalInfo": {
+          "issue": "35",
+          "volume": "74",
+          "journalIssueId": 4260163,
+          "dateOfPublication": "2026 Sep",
+          "monthOfPublication": 9,
+          "yearOfPublication": 2026,
+          "journal": {
+            "medlineAbbreviation": "J Agric Food Chem",
+            "title": "Journal of agricultural and food chemistry",
+            "essn": "1520-5118",
+            "issn": "0021-8561",
+            "isoabbreviation": "J Agric Food Chem",
+            "nlmid": "0374755"
+          },
+          "printPublicationDate": "2026-09-01"
+        },
+        "pubYear": "2026",
+        "pageInfo": "27521-27537",
+        "abstractText": "The study aimed to screen novel sleep-promoting oligopeptides from sea cucumbers. Proteolysis simulation, conducted on proteins that do not represent the primary structural components of the sea cucumber body wall, confirmed that alcalase and chymotrypsin were optimal for preparing sea cucumber oligopeptides. Two novel sleep-promoting peptides, Leu-Phe-Ala (LFA) and Thr-Phe-Trp (TFW), were successfully screened through bioinformatics tools, molecular docking, and pharmacophore models. Both LFA (520.5 ± 75.81 s) and TFW (188.3 ± 48.63 s) significantly shortened the sleep latency of PCPA-induced insomnia mice. Additionally, LFA alleviated anxiety-like behavior in insomnia mice. They ameliorated the imbalance of excitatory and inhibitory neurotransmitters in insomnia mice. LFA-GABAAR and TFW-GABAAR complexes interact via hydrogen bonds and hydrophobic forces, showing great structural stability. In conclusion, in silico and in vivo analysis can effectively and rapidly discover sleep-promoting peptides from sea cucumber proteins. This study provides a theoretical basis for identifying novel sleep-promoting constituents from natural proteins.",
+        "affiliation": "Food Biotechnology Engineering Research Center of Ministry of Education, Tianjin University of Science & Technology, Tianjin300457, China.",
+        "publicationStatus": "ppublish",
+        "language": "eng",
+        "pubModel": "Print",
+        "pubTypeList": {
+          "pubType": ["Journal Article"]
+        },
+        "grantsList": {
+          "grant": [
+            {
+              "agency": "Beijing-Tianjin-Hebei Natural Science Foundation Cooperation Project",
+              "grantId": "25JJJJC0027",
+              "orderIn": 0
+            }
+          ]
+        },
+        "meshHeadingList": {
+          "meshHeading": [
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Animals"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Humans"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Mice"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Sea Cucumbers",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "CH",
+                    "qualifierName": "chemistry"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Sleep Initiation and Maintenance Disorders",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DT",
+                    "qualifierName": "drug therapy"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "GE",
+                    "qualifierName": "genetics"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "ME",
+                    "qualifierName": "metabolism"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "PP",
+                    "qualifierName": "physiopathology"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Peptides",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "AD",
+                    "qualifierName": "administration & dosage"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "CH",
+                    "qualifierName": "chemistry"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Receptors, GABA-A",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "GE",
+                    "qualifierName": "genetics"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "ME",
+                    "qualifierName": "metabolism"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "CH",
+                    "qualifierName": "chemistry"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Sleep",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Male"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Proteolysis"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Molecular Docking Simulation"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Pharmacophore"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Bioactive Peptides, Dietary"
+            }
+          ]
+        },
+        "keywordList": {
+          "keyword": [
+            "Molecular dynamics simulation",
+            "Molecular docking",
+            "Gabaar",
+            "Pharmacophore Modeling",
+            "Proteolysis Simulation",
+            "Sleep-promoting Activity",
+            "Sea Cucumber Oligopeptides"
+          ]
+        },
+        "chemicalList": {
+          "chemical": [
+            {
+              "name": "Peptides",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Receptors, GABA-A",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Bioactive Peptides, Dietary",
+              "registryNumber": "0"
+            }
+          ]
+        },
+        "subsetList": {
+          "subset": [
+            {
+              "code": "IM",
+              "name": "Index Medicus"
+            }
+          ]
+        },
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1021/acs.jafc.6c03771"
+            }
+          ]
+        },
+        "isOpenAccess": "N",
+        "inEPMC": "N",
+        "inPMC": "N",
+        "citedByCount": 0,
+        "hasReferences": "N",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasPDF": "N",
+        "hasBook": "N",
+        "hasSuppl": "N",
+        "hasLabsLinks": "N",
+        "hasData": "N",
+        "authMan": "N",
+        "epmcAuthMan": "N",
+        "nihAuthMan": "N",
+        "hasTMAccessionNumbers": "N",
+        "dateOfCompletion": "2026-09-09",
+        "dateOfCreation": "2026-09-09",
+        "dateOfRevision": "2026-09-09",
+        "firstPublicationDate": "2026-09-01",
+        "firstIndexDate": "2026-09-10",
+        "hasEvaluations": "N"
+      },
+      {
+        "id": "42692736",
+        "source": "MED",
+        "pmid": "42692736",
+        "doi": "10.1016/j.foodres.2026.120350",
+        "title": "Skipjack tuna peptides exert sleep-promoting effects by regulating neurotransmitter metabolism in pentobarbital sodium-induced mice.",
+        "authorString": "Li XH, Huang Q, Wang FY, Sheng Y, Wang B.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Li XH",
+              "lastName": "Li",
+              "firstName": "Xi-Hui",
+              "initials": "XH",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China. Electronic address: zjoulxh@zjou.eud.cn."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Huang Q",
+              "lastName": "Huang",
+              "firstName": "Qiao",
+              "initials": "Q",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Wang FY",
+              "lastName": "Wang",
+              "firstName": "Fang-Yuan",
+              "initials": "FY",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Sheng Y",
+              "lastName": "Sheng",
+              "firstName": "Yan",
+              "initials": "Y",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Wang B",
+              "lastName": "Wang",
+              "firstName": "Bin",
+              "initials": "B",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China. Electronic address: wangbin4159@hotmail.com."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "journalInfo": {
+          "issue": "Pt 1",
+          "volume": "243",
+          "journalIssueId": 4257660,
+          "dateOfPublication": "2026 Nov",
+          "monthOfPublication": 11,
+          "yearOfPublication": 2026,
+          "journal": {
+            "medlineAbbreviation": "Food Res Int",
+            "title": "Food research international (Ottawa, Ont.)",
+            "essn": "1873-7145",
+            "issn": "1873-7145",
+            "isoabbreviation": "Food Res Int",
+            "nlmid": "9210143"
+          },
+          "printPublicationDate": "2026-11-01"
+        },
+        "pubYear": "2026",
+        "pageInfo": "120350",
+        "abstractText": "It is estimated that sleep disorders affect approximately 35% of the global population, thus becoming the second most prevalent mental health disorder. In this work, the sleep-promoting effect of skipjack tuna peptide GHHAA (S4) was evaluated systematically in pentobarbital sodium (PS)-induced mice, and its mechanism was explored through measuring the content changes of sleep-related neurotransmitters and c-Fos expression levels in mouse brain regions. In comparison with the control group, S4 was able to dose-dependently reduce the sleep latency (6.33 ± 1.15 min) and prolong sleep time (60.33 ± 2.3 min) in PS-induced mice. During the gavage period, S4 did not affect the food intake and body weight of mice. S4 showed no side effects on the organs of mice by liver, kidney, and spleen organ coefficients. Moreover, S4 did not directly induce sleep in mice and had no effect on heparanase activity. Further studies have shown that S4 dose-dependently decreases the contents of excitatory neurotransmitters (dopamine, glutamate) and conversely increases the levels of inhibitory neurotransmitters (γ-aminobutyric acid, GABA) and conversion ratio (3-dihydroxyphenylacetic acid/dopamine, 5-hydroxytryptamine/5-hydroxyindole acetic acid) in the mice brain. Moreover, high dose of S4 could significantly increase the levels of GABA receptor (GABA<sub>A</sub>R), and decreased the level of GABA transaminase (GABA-T) in mouse brain. Immunohistochemistry found that S4 could increase c-Fos-positive cells in the ventrolateral preoptic area (VLPO) of the hypothalamus of mice, exerting a sleep-promoting effect.",
+        "affiliation": "Zhejiang Provincial Engineering Technology Research Center of Marine Biomedical Products, School of Food and Pharmacy, Zhejiang Ocean University, Zhoushan 316022, China. Electronic address: zjoulxh@zjou.eud.cn.",
+        "publicationStatus": "ppublish",
+        "language": "eng",
+        "pubModel": "Print-Electronic",
+        "pubTypeList": {
+          "pubType": ["Journal Article"]
+        },
+        "grantsList": {
+          "grant": [
+            {
+              "agency": "Zhejiang Province Natural Science Foundation",
+              "grantId": "LQ23H190001",
+              "orderIn": 0
+            },
+            {
+              "agency": "National Natural Science Foundation of China",
+              "grantId": "82204268",
+              "orderIn": 0
+            },
+            {
+              "agency": "National Natural Science Foundation of China",
+              "grantId": "82073764",
+              "orderIn": 0
+            }
+          ]
+        },
+        "meshHeadingList": {
+          "meshHeading": [
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Brain",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  },
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "ME",
+                    "qualifierName": "metabolism"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Animals"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Tuna"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Mice"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Pentobarbital",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "PD",
+                    "qualifierName": "pharmacology"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Proto-Oncogene Proteins c-fos",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "ME",
+                    "qualifierName": "metabolism"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Fish Proteins",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "PD",
+                    "qualifierName": "pharmacology"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Neurotransmitter Agents",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "ME",
+                    "qualifierName": "metabolism"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Hypnotics and Sedatives"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Sleep",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Male"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Sleep Duration"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Bioactive Peptides, Dietary"
+            }
+          ]
+        },
+        "keywordList": {
+          "keyword": [
+            "C-fos expression",
+            "Neurotransmitter Metabolism",
+            "Pentobarbital Sodium-induced Mice",
+            "Skipjack Tuna Peptides (Ghhaa)",
+            "Sleep-promoting Activity"
+          ]
+        },
+        "chemicalList": {
+          "chemical": [
+            {
+              "name": "Hypnotics and Sedatives",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Neurotransmitter Agents",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Fish Proteins",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Proto-Oncogene Proteins c-fos",
+              "registryNumber": "0"
+            },
+            {
+              "name": "Pentobarbital",
+              "registryNumber": "I4744080IR"
+            },
+            {
+              "name": "Bioactive Peptides, Dietary",
+              "registryNumber": "0"
+            }
+          ]
+        },
+        "subsetList": {
+          "subset": [
+            {
+              "code": "IM",
+              "name": "Index Medicus"
+            }
+          ]
+        },
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1016/j.foodres.2026.120350"
+            }
+          ]
+        },
+        "isOpenAccess": "N",
+        "inEPMC": "N",
+        "inPMC": "N",
+        "citedByCount": 0,
+        "hasReferences": "Y",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasPDF": "N",
+        "hasBook": "N",
+        "hasSuppl": "N",
+        "hasLabsLinks": "N",
+        "hasData": "N",
+        "authMan": "N",
+        "epmcAuthMan": "N",
+        "nihAuthMan": "N",
+        "hasTMAccessionNumbers": "N",
+        "dateOfCompletion": "2026-09-03",
+        "dateOfCreation": "2026-09-03",
+        "dateOfRevision": "2026-09-03",
+        "electronicPublicationDate": "2026-08-09",
+        "firstPublicationDate": "2026-08-09",
+        "firstIndexDate": "2026-09-04",
+        "hasEvaluations": "N"
+      },
+      {
+        "id": "42654319",
+        "source": "MED",
+        "pmid": "42654319",
+        "pmcid": "PMC13516771",
+        "fullTextIdList": {
+          "fullTextId": ["PMC13516771"]
+        },
+        "doi": "10.3390/nu18162739",
+        "title": "Impact of N-PEP-12 Supplementation on Attentional Performance and Mental Wellbeing in Healthy Adults with Subjective Cognitive Complaints: A Randomized, Placebo-Controlled Trial.",
+        "authorString": "Chira D, Jemna N, Verișezan-Roșu O, Buruiană AM, Strilciuc Ș, Chelaru VF, Pârvu S, Mureșanu DF.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Chira D",
+              "lastName": "Chira",
+              "firstName": "Diana",
+              "initials": "D",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0009-0007-1589-0789"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Department of Neurosciences, Iuliu Hațieganu University of Medicine and Pharmacy, Victor Babeș 43, 400012 Cluj-Napoca, Romania."
+                  },
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Jemna N",
+              "lastName": "Jemna",
+              "firstName": "Nicoleta",
+              "initials": "N",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0009-0001-1971-8085"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Department of Neurosciences, Iuliu Hațieganu University of Medicine and Pharmacy, Victor Babeș 43, 400012 Cluj-Napoca, Romania."
+                  },
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Verișezan-Roșu O",
+              "lastName": "Verișezan-Roșu",
+              "firstName": "Olivia",
+              "initials": "O",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0009-0006-0863-5002"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Buruiană AM",
+              "lastName": "Buruiană",
+              "firstName": "Ana-Maria",
+              "initials": "AM",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Strilciuc Ș",
+              "lastName": "Strilciuc",
+              "firstName": "Ștefan",
+              "initials": "Ș",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0001-6112-0223"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Research Center for Functional Genomics, Biomedicine and Translational Medicine, Iuliu Hațieganu University of Medicine and Pharmacy, Gheorghe Marinescu 38, 400337 Cluj-Napoca, Romania."
+                  },
+                  {
+                    "affiliation": "Department of Translational Neurosciences, MEDFUTURE, Iuliu Hațieganu University of Medicine and Pharmacy, Gheorghe Marinescu 38, 400337 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Chelaru VF",
+              "lastName": "Chelaru",
+              "firstName": "Vlad-Florin",
+              "initials": "VF",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-2954-3263"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Department of Neurosciences, Iuliu Hațieganu University of Medicine and Pharmacy, Victor Babeș 43, 400012 Cluj-Napoca, Romania."
+                  },
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Pârvu S",
+              "lastName": "Pârvu",
+              "firstName": "Simona",
+              "initials": "S",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Department of Complementary Sciences, Discipline of Hygiene and Medical Ecology, Carol Davila University of Medicine and Pharmacy, 8 Eroii Sanitari Boulevard, 050474 Bucharest, Romania."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Mureșanu DF",
+              "lastName": "Mureșanu",
+              "firstName": "Dafin Fior",
+              "initials": "DF",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Department of Neurosciences, Iuliu Hațieganu University of Medicine and Pharmacy, Victor Babeș 43, 400012 Cluj-Napoca, Romania."
+                  },
+                  {
+                    "affiliation": "RoNeuro Institute for Neurological Research and Diagnostic, Mircea Eliade 37, 400354 Cluj-Napoca, Romania."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "authorIdList": {
+          "authorId": [
+            {
+              "type": "ORCID",
+              "value": "0000-0001-6112-0223"
+            },
+            {
+              "type": "ORCID",
+              "value": "0000-0003-2954-3263"
+            },
+            {
+              "type": "ORCID",
+              "value": "0009-0001-1971-8085"
+            },
+            {
+              "type": "ORCID",
+              "value": "0009-0006-0863-5002"
+            },
+            {
+              "type": "ORCID",
+              "value": "0009-0007-1589-0789"
+            }
+          ]
+        },
+        "dataLinksTagsList": {
+          "dataLinkstag": ["supporting_data"]
+        },
+        "journalInfo": {
+          "issue": "16",
+          "volume": "18",
+          "journalIssueId": 4250103,
+          "dateOfPublication": "2026 Aug",
+          "monthOfPublication": 8,
+          "yearOfPublication": 2026,
+          "journal": {
+            "medlineAbbreviation": "Nutrients",
+            "title": "Nutrients",
+            "essn": "2072-6643",
+            "issn": "2072-6643",
+            "nlmid": "101521595",
+            "isoabbreviation": "Nutrients"
+          },
+          "printPublicationDate": "2026-08-01"
+        },
+        "pubYear": "2026",
+        "pageInfo": "2739",
+        "abstractText": "<b>Background</b>: Subjective cognitive complaints (SCCs) are common in middle-aged and older adults and may reflect early cognitive changes, alongside alterations in stress, mood, sleep, and quality of life. N-PEP-12 is a peptide-based nutritional supplement with potential neuroprotective effects, but evidence of its benefits in healthy adults with SCCs remains limited. <b>Objective</b>: To evaluate the effects of N-PEP-12 supplementation on attention, cognitive function, and mental wellbeing in healthy middle-aged and older adults with SCCs. <b>Methods</b>: In this prospective, randomized, double-blind, placebo-controlled trial, 276 participants aged 50-75 years with SCCs and no clinically significant cognitive impairment were randomized to placebo, N-PEP-12 45 mg, or N-PEP-12 90 mg. Assessments were performed at baseline and after 30, 90, and 180 days. Primary outcomes included Test of Attentional Performance measures. Secondary outcomes included WAIS-IV Digit Span Forward and Backward, perceived stress, mood, sleep quality, and EQ-5D-5L visual analog scale. <b>Results</b>: Across the three primary attention outcomes analyzed jointly in a multivariate repeated-measures model, there was a significant group-by-visit interaction (<i>p</i> = 0.003) and a significant effect of visit (<i>p</i> < 0.001), without a significant main effect of treatment arm (<i>p</i> = 0.133), indicating a time-dependent treatment effect. This result was obtained in a sensitivity analysis population in which missing values were imputed under assumptions least favorable to the active arms. In exploratory endpoint-specific comparisons at 90 days, both N-PEP-12 groups showed greater improvements than placebo in alertness, attention omissions and memory omissions, and Digit Span Forward and Backward scores also improved. In a subsequent uncontrolled extension phase, in which all participants received active treatment, participants initially assigned to placebo showed comparable improvements after switching to N-PEP-12 90 mg. These observations are exploratory. Adverse events were infrequent and similarly distributed across groups. <b>Conclusions</b>: N-PEP-12 supplementation was associated with improvements in attention, working memory, and mental wellbeing in healthy middle-aged and older adults with subjective cognitive complaints. These findings support further investigation of N-PEP-12 as a nutritional intervention for early subjective cognitive changes associated with aging.",
+        "affiliation": "Department of Neurosciences, Iuliu Hațieganu University of Medicine and Pharmacy, Victor Babeș 43, 400012 Cluj-Napoca, Romania.",
+        "publicationStatus": "epublish",
+        "language": "eng",
+        "pubModel": "Electronic",
+        "pubTypeList": {
+          "pubType": ["research-article", "Randomized Controlled Trial", "Journal Article"]
+        },
+        "grantsList": {
+          "grant": [
+            {
+              "agency": "Foundation for the Study of Nanoneurosciences and Neuroregeneration (FSNANO)",
+              "orderIn": 0
+            }
+          ]
+        },
+        "meshHeadingList": {
+          "meshHeading": [
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Humans"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Prospective Studies"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Double-Blind Method"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Affect",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Mental Health"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Cognition",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Attention",
+              "meshQualifierList": {
+                "meshQualifier": [
+                  {
+                    "majorTopic_YN": "N",
+                    "abbreviation": "DE",
+                    "qualifierName": "drug effects"
+                  }
+                ]
+              }
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Quality of Life"
+            },
+            {
+              "majorTopic_YN": "Y",
+              "descriptorName": "Dietary Supplements"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Aged"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Middle Aged"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Female"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Male"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Psychological Well-Being"
+            },
+            {
+              "majorTopic_YN": "N",
+              "descriptorName": "Cognitive Enhancement"
+            }
+          ]
+        },
+        "keywordList": {
+          "keyword": [
+            "Memory",
+            "Attention",
+            "Subjective Cognitive Complaints",
+            "Mental Wellbeing",
+            "N-pep-12"
+          ]
+        },
+        "subsetList": {
+          "subset": [
+            {
+              "code": "IM",
+              "name": "Index Medicus"
+            }
+          ]
+        },
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.3390/nu18162739"
+            },
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "html",
+              "site": "Europe_PMC",
+              "url": "https://europepmc.org/articles/PMC13516771"
+            },
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "pdf",
+              "site": "Europe_PMC",
+              "url": "https://europepmc.org/articles/PMC13516771?pdf=render"
+            }
+          ]
+        },
+        "isOpenAccess": "Y",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "citedByCount": 0,
+        "hasReferences": "Y",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasPDF": "Y",
+        "hasBook": "N",
+        "hasSuppl": "Y",
+        "hasLabsLinks": "N",
+        "hasData": "Y",
+        "license": "cc by",
+        "authMan": "N",
+        "epmcAuthMan": "N",
+        "nihAuthMan": "N",
+        "hasTMAccessionNumbers": "Y",
+        "tmAccessionTypeList": {
+          "accessionType": ["doi"]
+        },
+        "dateOfCompletion": "2026-08-27",
+        "dateOfCreation": "2026-08-27",
+        "dateOfRevision": "2026-09-03",
+        "electronicPublicationDate": "2026-08-21",
+        "firstPublicationDate": "2026-08-21",
+        "firstIndexDate": "2026-08-30",
+        "fullTextReceivedDate": "2026-09-10",
+        "hasEvaluations": "N"
+      },
+      {
+        "id": "PPR1262876",
+        "source": "PPR",
+        "doi": "10.64898/2026.06.25.734557",
+        "title": "Gut-derived serine protease reduces sleep but extends lifespan",
+        "authorString": "Moore RS, Xiong R, Astacio E, Williams J, Brooks TG, Grant G, Stucynski J, Fazalinia H, Nash E, Spruce L, Sehgal A.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Moore RS",
+              "lastName": "Moore",
+              "firstName": "Rebecca",
+              "initials": "RS",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-3155-3436"
+              }
+            },
+            {
+              "fullName": "Xiong R",
+              "lastName": "Xiong",
+              "firstName": "Richard",
+              "initials": "R"
+            },
+            {
+              "fullName": "Astacio E",
+              "lastName": "Astacio",
+              "firstName": "Erick",
+              "initials": "E"
+            },
+            {
+              "fullName": "Williams J",
+              "lastName": "Williams",
+              "firstName": "Julie",
+              "initials": "J"
+            },
+            {
+              "fullName": "Brooks TG",
+              "lastName": "Brooks",
+              "firstName": "Thomas",
+              "initials": "TG"
+            },
+            {
+              "fullName": "Grant G",
+              "lastName": "Grant",
+              "firstName": "Gregory",
+              "initials": "G"
+            },
+            {
+              "fullName": "Stucynski J",
+              "lastName": "Stucynski",
+              "firstName": "Joseph",
+              "initials": "J"
+            },
+            {
+              "fullName": "Fazalinia H",
+              "lastName": "Fazalinia",
+              "firstName": "Hossein",
+              "initials": "H"
+            },
+            {
+              "fullName": "Nash E",
+              "lastName": "Nash",
+              "firstName": "Erik",
+              "initials": "E"
+            },
+            {
+              "fullName": "Spruce L",
+              "lastName": "Spruce",
+              "firstName": "Lynn",
+              "initials": "L"
+            },
+            {
+              "fullName": "Sehgal A",
+              "lastName": "Sehgal",
+              "firstName": "Amita",
+              "initials": "A"
+            }
+          ]
+        },
+        "authorIdList": {
+          "authorId": [
+            {
+              "type": "ORCID",
+              "value": "0000-0003-3155-3436"
+            }
+          ]
+        },
+        "pubYear": "2026",
+        "abstractText": "Sleep has historically been viewed through a brain-centric lens with little known about the contribution of the periphery. Through a targeted screen of secreted peptides from the fat body, gut, and body wall muscle in  Drosophila , we identified CG11037, a trypsin-like serine endopeptidase secreted from midgut enterocytes, as a previously unrecognized regulator of sleep. Loss of  CG11037 reduces daily sleep, as well as sleep following injury/infection, although recovery is enhanced suggesting reduced need for sleep during sickness. Proteomic analysis of flies with reduced  CG11037 revealed altered oxidative stress response pathways including cytochrome P450–related proteins. Indeed, gut-specific knockdown of  Cyp6a2 or  Cyp28d1 phenocopies  CG11037 sleep defects, and loss of  CG11037 or P450 elevates reactive oxygen species (ROS) selectively in the gut without affecting brain ROS. Rescue of sleep by antioxidant treatment demonstrates that peripheral ROS accumulation drives the behavioral phenotype. Strikingly, despite physiological dysfunction and reduced sleep,  CG11037 or Cytochrome P450 knockdown extends lifespan in a ROS-dependent manner, suggesting that stress adaptation of these knockdowns allows them to live longer. Together, these findings uncover a mechanism for the unexpected association of reduced sleep and extended lifespan.",
+        "pubTypeList": {
+          "pubType": ["Preprint"]
+        },
+        "bookOrReportDetails": {
+          "publisher": "bioRxiv",
+          "yearOfPublication": 2026
+        },
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Free",
+              "availabilityCode": "F",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.64898/2026.06.25.734557"
+            }
+          ]
+        },
+        "isOpenAccess": "N",
+        "inEPMC": "N",
+        "inPMC": "N",
+        "citedByCount": 0,
+        "hasReferences": "Y",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasPDF": "N",
+        "hasBook": "N",
+        "hasSuppl": "N",
+        "hasLabsLinks": "N",
+        "hasData": "N",
+        "license": "cc by",
+        "authMan": "N",
+        "epmcAuthMan": "N",
+        "nihAuthMan": "N",
+        "hasTMAccessionNumbers": "N",
+        "dateOfCreation": "2026-07-02",
+        "firstPublicationDate": "2026-06-29",
+        "firstIndexDate": "2026-07-02",
+        "hasEvaluations": "N"
+      }
+    ]
+  }
+}

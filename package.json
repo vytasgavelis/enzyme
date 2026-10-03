@@ -11,6 +11,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "vitest run",
+    "epmc": "pnpm --filter @enzyme/server epmc",
     "db:generate": "pnpm --filter @enzyme/server db:generate",
     "db:studio": "pnpm --filter @enzyme/server db:studio"
   },
