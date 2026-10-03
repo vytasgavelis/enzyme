@@ -4,6 +4,7 @@ import { api } from "./api";
 import { ApiError, type EnzymeApi } from "./enzyme-api";
 
 const searches = api.api.searches;
+const papers = api.api.papers;
 const param = (id: number) => ({ param: { id: String(id) } });
 
 /**
@@ -46,4 +47,5 @@ export const httpApi: EnzymeApi = {
   getLatestRun: (id) => ok(searches[":id"].pull.$get(param(id))),
   getFeed: (id, query) =>
     ok(searches[":id"].papers.$get({ ...param(id), query: feedParams(query) })),
+  generateCard: (paperId) => ok(papers[":id"].card.$post(param(paperId))),
 };

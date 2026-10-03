@@ -1,12 +1,21 @@
-import { type FeedPaper, type Tier, tierLabels } from "@enzyme/shared";
-import { ChevronDown, ChevronUp, ExternalLink, Sparkles, TriangleAlert } from "lucide-react";
-import type { ReactNode } from "react";
+import {
+  type CardFieldKey,
+  cardFieldKeys,
+  type FeedPaper,
+  quoteParts,
+  type Tier,
+  tierLabels,
+} from "@enzyme/shared";
+import { ChevronDown, ChevronUp, ExternalLink, TriangleAlert } from "lucide-react";
+import { type ReactNode, useState } from "react";
 import { Pill, type PillTone } from "@/components/pill";
-import { SourceHtml } from "@/components/source-html";
+import { type Mark, SourceHtml } from "@/components/source-html";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { formatDate } from "@/lib/format";
+import { useCardStatus } from "@/lib/queries";
+import { CardError, keyNumbers, ResultPill, StudyCardPanel, SummariseButton } from "./study-card";
 
 export const TIER_TONE: Record<Tier, { tone: PillTone; kind: "soft" | "surface" }> = {
   "meta-analysis": { tone: "green", kind: "soft" },
@@ -106,6 +115,7 @@ export function PaperRow({
                 </Pill>
               </Tip>
             )}
+            {paper.card && <ResultPill card={paper.card.card} />}
           </div>
           <h3
             className={`font-semibold text-[15px] leading-snug ${paper.isRetracted ? "line-through" : ""}`}
@@ -123,7 +133,10 @@ export function PaperRow({
               .filter(Boolean)
               .join(" · ")}
           </p>
+          {paper.card && !expanded && <CardLine paper={paper} />}
+          {!expanded && <CardError paperId={paper.id} />}
         </button>
+        {!paper.card && !expanded && <SummariseButton paper={paper} />}
         <Button
           type="button"
           variant="ghost"
@@ -141,23 +154,45 @@ export function PaperRow({
   );
 }
 
+/** The collapsed row's card line: key numbers in mono, then the takeaway. */
+function CardLine({ paper }: { paper: FeedPaper }) {
+  const { pending } = useCardStatus(paper.id);
+  const card = paper.card?.card;
+  if (!card) return null;
+  const numbers = keyNumbers(card);
+  return (
+    <div className={`mt-1.5 flex flex-col gap-0.5 ${pending ? "opacity-50" : ""}`}>
+      {numbers.length > 0 && (
+        <p className="font-mono text-stone-600 text-xs">{numbers.join(" · ")}</p>
+      )}
+      {card.takeaway && <p className="text-green-900 text-sm">{card.takeaway}</p>}
+    </div>
+  );
+}
+
 function PaperDetail({ paper }: { paper: FeedPaper }) {
   const links = paperLinks(paper);
+  const [active, setActive] = useState<CardFieldKey | null>(null);
+  const card = paper.card?.card;
+  // Every verified quote is lightly marked; the hovered fact's quote stands out.
+  const marks: Mark[] = card
+    ? cardFieldKeys.flatMap((k) =>
+        card[k].status === "stated" && card[k].quote
+          ? quoteParts(card[k].quote).map((quote) => ({ quote, active: k === active }))
+          : [],
+      )
+    : [];
+
   return (
     <div className="mt-3">
       <Separator className="mb-3" />
-      <div className="mb-3 flex items-center justify-between gap-3 rounded-md bg-muted/60 px-3 py-2 text-muted-foreground text-sm">
-        <span>Key facts and a plain-language summary will appear here.</span>
-        <Button type="button" size="xs" variant="secondary" disabled>
-          <Sparkles /> Summarise (next step)
-        </Button>
-      </div>
+      <StudyCardPanel paper={paper} active={active} onActive={setActive} />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
         <div>
           <p className="mb-1 font-medium text-muted-foreground text-xs">Abstract</p>
           <div className="max-w-[75ch] text-sm leading-relaxed">
-            {paper.abstract ? <SourceHtml html={paper.abstract} /> : "No abstract."}
+            {paper.abstract ? <SourceHtml html={paper.abstract} marks={marks} /> : "No abstract."}
           </div>
           {paper.authors && <p className="mt-3 text-muted-foreground text-xs">{paper.authors}</p>}
         </div>

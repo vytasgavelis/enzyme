@@ -6,6 +6,7 @@
  * Timestamps are ISO 8601 strings on the wire.
  */
 import { z } from "zod";
+import type { PaperCard } from "./card.js";
 import type { Species, Tier } from "./evidence.js";
 import { tiers } from "./evidence.js";
 import type { FullTextUrl } from "./paper.js";
@@ -146,6 +147,8 @@ export interface FeedPaper {
   isRetracted: boolean;
   firstMatchedAt: string;
   isNew: boolean;
+  /** The latest study card, or `null` until one is generated (T-7). */
+  card: PaperCard | null;
 }
 
 export interface FeedPage {

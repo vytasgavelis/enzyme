@@ -1,12 +1,15 @@
-import type { FeedQuery, SavedSearchInput } from "@enzyme/shared";
+import type { FeedPage, FeedQuery, PaperCard, SavedSearchInput } from "@enzyme/shared";
 import {
+  type InfiniteData,
   keepPreviousData,
+  type QueryClient,
   useInfiniteQuery,
   useMutation,
+  useMutationState,
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { EnzymeApi } from "./enzyme-api";
 import { httpApi } from "./http-api";
 import { mockApi } from "./mock-api";
@@ -19,6 +22,8 @@ const keys = {
   searches: ["searches"] as const,
   feed: (id: number) => ["feed", id] as const,
   run: (id: number) => ["run", id] as const,
+  allFeeds: ["feed"] as const,
+  card: ["card"] as const,
 };
 
 export function useSearches() {
@@ -124,4 +129,81 @@ export function usePull(id: number) {
   }, [status, fetched, id, qc]);
 
   return { run: run.data ?? null, start };
+}
+
+/** Puts a new card into every cached feed page that shows the paper. */
+function patchCard(qc: QueryClient, card: PaperCard) {
+  qc.setQueriesData<InfiniteData<FeedPage>>({ queryKey: keys.allFeeds }, (data) =>
+    data
+      ? {
+          ...data,
+          pages: data.pages.map((page) => ({
+            ...page,
+            items: page.items.map((p) => (p.id === card.paperId ? { ...p, card } : p)),
+          })),
+        }
+      : data,
+  );
+}
+
+/** Generates (or regenerates) a paper's study card; `mutate(paperId)`. */
+export function useGenerateCard() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationKey: keys.card,
+    mutationFn: (paperId: number) => enzymeApi.generateCard(paperId),
+    onSuccess: (card) => patchCard(qc, card),
+  });
+}
+
+/** Whether a card is being generated for the paper, by its row or a batch, and the last error. */
+export function useCardStatus(paperId: number) {
+  const states = useMutationState({
+    filters: { mutationKey: keys.card, predicate: (m) => m.state.variables === paperId },
+    select: (m) => ({ status: m.state.status, error: m.state.error }),
+  });
+  const latest = states.at(-1);
+  return {
+    pending: latest?.status === "pending",
+    error: latest?.status === "error" ? (latest.error?.message ?? "Failed") : null,
+  };
+}
+
+/** Cards generated at once by "Summarise top N": 10 took ~50 s at 4 on the free tier (2026-10-04). */
+const BATCH_CONCURRENCY = 4;
+
+/**
+ * Generates cards for a list of papers a few at a time (T-8). Each finished card appears in
+ * its row straight away; `progress` counts them for the button.
+ */
+export function useSummariseMany() {
+  const { mutateAsync } = useGenerateCard();
+  const [progress, setProgress] = useState<{ done: number; failed: number; total: number } | null>(
+    null,
+  );
+
+  const run = useCallback(
+    async (paperIds: number[]) => {
+      const queue = [...paperIds];
+      let done = 0;
+      let failed = 0;
+      setProgress({ done, failed, total: paperIds.length });
+      const worker = async () => {
+        for (let id = queue.shift(); id !== undefined; id = queue.shift()) {
+          try {
+            await mutateAsync(id);
+          } catch {
+            failed++;
+          }
+          done++;
+          setProgress({ done, failed, total: paperIds.length });
+        }
+      };
+      await Promise.all(Array.from({ length: BATCH_CONCURRENCY }, worker));
+    },
+    [mutateAsync],
+  );
+
+  const running = progress !== null && progress.done < progress.total;
+  return { run, running, progress };
 }
