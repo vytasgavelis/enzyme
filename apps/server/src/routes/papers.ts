@@ -1,8 +1,15 @@
-import { paperInputSchema } from "@enzyme/shared";
 import { zValidator } from "@hono/zod-validator";
 import { desc, eq } from "drizzle-orm";
 import { Hono } from "hono";
+import { z } from "zod";
 import { db, schema } from "../db/index.js";
+
+/** Placeholder input for the demo page; goes away when T-3 replaces the papers table. */
+const placeholderPaperSchema = z.object({
+  pmid: z.string().min(1),
+  title: z.string().min(1),
+  abstract: z.string().optional(),
+});
 
 export const papersRoute = new Hono()
   .get("/", async (c) => {
@@ -15,7 +22,7 @@ export const papersRoute = new Hono()
     if (!row) return c.json({ error: "not found" }, 404);
     return c.json(row);
   })
-  .post("/", zValidator("json", paperInputSchema), async (c) => {
+  .post("/", zValidator("json", placeholderPaperSchema), async (c) => {
     const input = c.req.valid("json");
     const [row] = await db
       .insert(schema.papers)
