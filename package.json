@@ -13,6 +13,7 @@
     "test": "vitest run",
     "epmc": "pnpm --filter @enzyme/server epmc",
     "cards": "pnpm --filter @enzyme/server cards",
+    "traces": "pnpm --filter @enzyme/server traces",
     "db:generate": "pnpm --filter @enzyme/server db:generate",
     "db:studio": "pnpm --filter @enzyme/server db:studio"
   },

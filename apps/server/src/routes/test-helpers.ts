@@ -1,5 +1,6 @@
 import type { CardOutput, PaperInput } from "@enzyme/shared";
 import type { CardGeneration, GenerateCard } from "../ai/card-agent.js";
+import { type CheckQuery, createQuerySuggester, type RunQueryAgent } from "../ai/query-agent.js";
 import { createApp } from "../app.js";
 import { createDb, type Db, migrateDb } from "../db/client.js";
 import type { EuropePmcClient, EuropePmcRecord } from "../sources/europepmc.js";
@@ -89,6 +90,30 @@ export function fakeModel() {
   return fake;
 }
 
+/**
+ * Query-agent model stand-in: `script` plays the agent (it may call the hit-count tool) and
+ * returns the reply text. By default it answers with the intent itself as the query.
+ */
+export function fakeQueryModel() {
+  const fake = {
+    intents: [] as string[],
+    fail: null as Error | null,
+    script: async (intent: string, _check: CheckQuery): Promise<string> =>
+      JSON.stringify({ query: intent, explanation: "Same words." }),
+    run: (async (intent, check) => {
+      fake.intents.push(intent);
+      if (fake.fail) throw fake.fail;
+      return {
+        text: await fake.script(intent, check),
+        modelId: "fake/model",
+        inputTokens: 100,
+        outputTokens: 20,
+      };
+    }) as RunQueryAgent,
+  };
+  return fake;
+}
+
 /** Model output with every field unknown; spread over it to state some. */
 export function unknownCard(overrides: Partial<CardOutput> = {}): CardOutput {
   const unknown = { value: null, quote: null, status: "unknown" as const };
@@ -117,11 +142,20 @@ export function testApp(results: Record<string, PaperInput[]> = {}) {
   migrateDb(db);
   const europePmc = fakeEuropePmc(results);
   const model = fakeModel();
+  const queryModel = fakeQueryModel();
+  /** Europe PMC hit counts the fake query agent's tool sees, by query; unknown ones count 0. */
+  const hits: Record<string, number> = {};
   const pulls: Promise<void>[] = [];
   const app = createApp({
     db,
     europePmc,
     generateCard: model.generate,
+    suggestQuery: createQuerySuggester({
+      runAgent: queryModel.run,
+      countHits: async (query) => hits[query] ?? 0,
+      log: () => {},
+      retryDelaysMs: [],
+    }),
     logRequests: false,
     onPullStarted: (done) => pulls.push(done),
   });
@@ -141,6 +175,8 @@ export function testApp(results: Record<string, PaperInput[]> = {}) {
     app,
     europePmc,
     model,
+    queryModel,
+    hits,
     call,
     /** Waits for every pull started so far. */
     settlePulls: () => Promise.all(pulls),

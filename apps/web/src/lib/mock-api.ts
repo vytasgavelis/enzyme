@@ -19,6 +19,7 @@ import {
   type SavedSearchInput,
   savedSearchInputSchema,
   stripHtml,
+  suggestQueryInputSchema,
   tiers,
 } from "@enzyme/shared";
 import pools from "@/mocks/europepmc-pools.json";
@@ -35,6 +36,8 @@ interface StoredSearch {
   id: number;
   name: string;
   query: string;
+  /** Missing in searches stored before T-11. */
+  intent?: string | null;
   createdAt: string;
   lastRunAt: string | null;
   lastViewedAt: string | null;
@@ -178,6 +181,7 @@ function toSavedSearch(s: StoredSearch): SavedSearch {
   const runs = store.runs.filter((r) => r.searchId === s.id);
   return {
     ...s,
+    intent: s.intent ?? null,
     paperCount: links.length,
     newCount: s.lastViewedAt
       ? links.filter((l) => l.firstMatchedAt > (s.lastViewedAt ?? "")).length
@@ -189,8 +193,8 @@ function toSavedSearch(s: StoredSearch): SavedSearch {
 function parseInput(input: SavedSearchInput) {
   const parsed = savedSearchInputSchema.safeParse(input);
   if (!parsed.success) throw new ApiError(400, parsed.error.issues[0]?.message ?? "Invalid search");
-  const { name, query } = parsed.data;
-  return { name, query: query || name };
+  const { name, query, intent } = parsed.data;
+  return { name, query: query || name, intent: intent || null };
 }
 
 const tierRank = (t: FeedPaper["tier"]) => tiers.indexOf(t);
@@ -235,11 +239,9 @@ export const mockApi: EnzymeApi = {
 
   async createSearch(input) {
     await sleep(120);
-    const { name, query } = parseInput(input);
     const s: StoredSearch = {
       id: store.nextId++,
-      name,
-      query,
+      ...parseInput(input),
       createdAt: iso(Date.now()),
       lastRunAt: null,
       lastViewedAt: null,
@@ -370,6 +372,22 @@ export const mockApi: EnzymeApi = {
       newCount: all.filter((p) => p.isNew).length,
       page: f.page,
       pageSize: f.pageSize,
+    };
+  },
+
+  async suggestQuery(input) {
+    await sleep(800);
+    const parsed = suggestQueryInputSchema.safeParse(input);
+    if (!parsed.success) throw new ApiError(400, parsed.error.issues[0]?.message ?? "Invalid");
+    // No model in the browser: AND the words together and count the recorded pools.
+    const query = parsed.data.intent
+      .split(/\s+/)
+      .filter((w) => w.length > 2)
+      .join(" AND ");
+    return {
+      query,
+      hitCount: recordsFor(query).length,
+      explanation: "Mock suggestion: every word of the description must appear.",
     };
   },
 
