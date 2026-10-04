@@ -10,11 +10,21 @@ import type { FullTextUrl, PaperInput } from "@enzyme/shared";
  * - Malformed query syntax (`AND`, unknown fields, unbalanced brackets) is NOT an error:
  *   it returns 0 hits or is silently repaired. A bad query can't be told from a narrow one.
  * - An unrecognised cursorMark returns HTTP 503.
+ * - Without `sort` results come in relevance order. `sort=FIRST_PDATE_D desc` orders by
+ *   `firstPublicationDate`, newest first, and cursorMark paging keeps that order (verified
+ *   live 2026-10-04). `P_PDATE_D` is the print date and does not match `firstPublicationDate`.
  */
 
 export const EUROPE_PMC_SEARCH_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search";
 const MAX_QUERY_LENGTH = 1500;
 const MAX_PAGE_SIZE = 1000;
+
+/** `relevance`: Europe PMC's default order. `newest`: by first publication date, newest first. */
+export type SearchSort = "relevance" | "newest";
+const SORT_PARAM: Record<SearchSort, string | null> = {
+  relevance: null,
+  newest: "FIRST_PDATE_D desc",
+};
 
 export type EuropePmcErrorKind = "invalid_request" | "upstream";
 
@@ -48,6 +58,8 @@ export interface SearchOptions {
   pageSize?: number;
   /** Adds `HAS_ABSTRACT:y` unless the query already mentions it. Default `true`. */
   requireAbstract?: boolean;
+  /** Default `relevance` (no sort parameter; cheapest for a hit count). */
+  sort?: SearchSort;
 }
 
 export interface SearchAllOptions {
@@ -55,6 +67,8 @@ export interface SearchAllOptions {
   maxRecords?: number;
   pageSize?: number;
   requireAbstract?: boolean;
+  /** Default `newest`, so a capped pull keeps the most recent papers. */
+  sort?: SearchSort;
   /** Called after each page, e.g. for pull progress. */
   onPage?: (progress: { hitCount: number; fetched: number }) => void;
 }
@@ -150,6 +164,8 @@ export function createEuropePmcClient(options: EuropePmcClientOptions = {}): Eur
       pageSize: String(pageSize),
       cursorMark,
     });
+    const sort = SORT_PARAM[opts.sort ?? "relevance"];
+    if (sort) params.set("sort", sort);
     const body = asObject(await getJson(`${baseUrl}?${params}`));
 
     // Errors arrive with HTTP 200 and an error body instead of results.
@@ -186,6 +202,7 @@ export function createEuropePmcClient(options: EuropePmcClientOptions = {}): Eur
         cursorMark,
         pageSize: Math.min(pageSize, maxRecords - fetched),
         requireAbstract: opts.requireAbstract,
+        sort: opts.sort ?? "newest",
       });
       const records = page.records.slice(0, maxRecords - fetched);
       fetched += records.length;

@@ -193,6 +193,17 @@ describe("search", () => {
     expect(result.records[0]?.raw).toEqual(medline);
   });
 
+  it("sends a newest-first sort only when asked", async () => {
+    const { client, requestedParams } = testClient([
+      jsonResponse(page(["1"])),
+      jsonResponse(page(["1"])),
+    ]);
+    await client.search("sleep", { sort: "newest" });
+    await client.search("sleep", { sort: "relevance" });
+    expect(requestedParams(0).get("sort")).toBe("FIRST_PDATE_D desc");
+    expect(requestedParams(1).has("sort")).toBe(false);
+  });
+
   it("surfaces Europe PMC's error message, which arrives with HTTP 200", async () => {
     const { client } = testClient([
       jsonResponse({ errCode: 404, errMsg: "No search criteria provided." }),
@@ -250,6 +261,10 @@ describe("searchAll", () => {
 
     expect(records.map((r) => r.paper.sourceId)).toEqual(["1", "2", "3", "4", "5", "6", "7"]);
     expect([0, 1, 2].map((i) => requestedParams(i).get("cursorMark"))).toEqual(["*", "c1", "c2"]);
+    // Pulls keep the newest papers, so every page asks for the same newest-first order.
+    expect([0, 1, 2].map((i) => requestedParams(i).get("sort"))).toEqual(
+      Array(3).fill("FIRST_PDATE_D desc"),
+    );
     expect(onPage).toHaveBeenLastCalledWith({ hitCount: 7, fetched: 7 });
   });
 
@@ -263,6 +278,12 @@ describe("searchAll", () => {
     expect(records).toHaveLength(5);
     expect(fetch).toHaveBeenCalledTimes(2);
     expect(requestedParams(1).get("pageSize")).toBe("2");
+  });
+
+  it("can page in relevance order instead", async () => {
+    const { client, requestedParams } = testClient([jsonResponse(page(["1"]))]);
+    await collect(client.searchAll("sleep", { sort: "relevance" }));
+    expect(requestedParams(0).has("sort")).toBe(false);
   });
 
   it("stops on an empty page", async () => {

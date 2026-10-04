@@ -46,7 +46,7 @@ export function PullStatus({
           {run.hitCount !== null &&
             run.target !== null &&
             run.hitCount > run.target &&
-            ` (first ${run.target} of ${run.hitCount})`}
+            ` (newest ${run.target} of ${run.hitCount})`}
         </p>
       )}
 

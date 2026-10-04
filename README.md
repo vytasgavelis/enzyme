@@ -22,8 +22,8 @@ facts she can check against the abstract herself rather than a summary she has t
 ## What it does
 
 - **Saved searches for her topics.** Each search is a Europe PMC query (Europe PMC includes PubMed
-  and preprints). "Pull papers" fetches up to 500 matching papers with an abstract into a local
-  library, with live progress. Pull again later and only the new papers are marked **New**.
+  and preprints). "Pull papers" fetches the newest 500 matching papers with an abstract into a
+  local library, with live progress. Pull again later and only the new papers are marked **New**.
 - **Describe a topic in plain English, get a query.** She doesn't need to know Europe PMC's query
   syntax. "Suggest query" asks an AI agent to write one; the agent checks real hit counts with a
   tool and narrows or widens until the search returns a readable number of papers (50 to 5,000).
@@ -42,9 +42,9 @@ facts she can check against the abstract herself rather than a summary she has t
 - **"Summarise top 10"** summarises the first ten papers in the current filtered feed, four at a
   time, so the feed fills in with sample sizes, doses and takeaways in under a minute.
 
-![An expanded paper: plain-language summary, takeaway, the 12 key facts, and the abstract with the quote for the hovered fact ("Dose / regimen") highlighted](docs/study-card.png)
+![An expanded paper (an RCT of curcumin with an anti-inflammatory diet in Hashimoto's thyroiditis): plain-language summary, takeaway, the 12 key facts, and the abstract with the quote for the hovered fact ("Dose / regimen") highlighted](docs/study-card.png)
 
-<img src="docs/suggest-query.png" width="460" alt="The New search dialog: a plain-English description, the suggested Europe PMC query and its hit count (169 papers)">
+<img src="docs/suggest-query.png" width="460" alt="The New search dialog: the question &quot;does curcumin reduce inflammation in rheumatoid arthritis?&quot;, the suggested Europe PMC query and its hit count (212 papers)">
 
 ## Quick start
 
@@ -73,7 +73,7 @@ enough: the free tier serves Gemma.
 `pnpm seed` adds these searches with fixed queries, so it is fast, gives the same result every time
 and needs no key. The queries were written by the Suggest query agent and checked by hand. Running
 it again skips any search that already exists by name or by query. `pnpm seed --pull` also pulls
-every search (about 40 seconds for all six).
+every search (about 35 seconds for all six).
 
 | Search | Europe PMC query | Papers (4 Oct 2026) |
 |---|---|---|
@@ -84,8 +84,8 @@ every search (about 40 seconds for all six).
 | Probiotics for IBS | `(TITLE_ABS:probiotic* OR TITLE_ABS:probiotics) AND (TITLE_ABS:"irritable bowel syndrome" OR TITLE_ABS:IBS)` | 1,380 |
 | Vitamin D and autoimmune thyroid | vitamin D / cholecalciferol AND autoimmune thyroid disease / Hashimoto / Graves, in title or abstract | 280 |
 
-Counts are papers with an abstract. A pull keeps the first 500 in Europe PMC's relevance order.
-The full queries are in
+Counts are papers with an abstract. A pull keeps the newest 500, by first publication date, so
+pulling again later picks up papers published since. The full queries are in
 [`apps/server/src/db/seed.ts`](apps/server/src/db/seed.ts).
 
 ## Configuration
@@ -188,8 +188,9 @@ works and its caveats, is in [`bench/results/gemma-26b-vs-31b.md`](bench/results
   The paper shows an error and "Summarise" can be pressed again; for some papers it fails every time.
 - Pulls run inside the API process. A pull that is running when the server stops is marked failed
   on the next start; press "Pull new papers" again.
-- A pull takes the first 500 papers in Europe PMC's relevance order, not the newest 500. For a
-  search with more hits than that, narrow the query.
+- A pull keeps only the newest 500 papers. For a search with more hits than that, older papers
+  are never fetched; narrow the query, or add a date range such as
+  `AND FIRST_PDATE:[2018-01-01 TO 2019-12-31]` to reach them.
 - It is a local app for one person: no accounts, no deployment.
 
 ## Hacktoberfest
