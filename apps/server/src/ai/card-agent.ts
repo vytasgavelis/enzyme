@@ -115,8 +115,16 @@ export function toModelError(err: unknown, timeoutMs = TIMEOUT_MS): ModelError {
   if (status === 429) {
     return new ModelError("The model provider is rate limiting us. Try again in a minute.", 429);
   }
+  if (/api key/i.test(message) && !/could not find api key/i.test(message)) {
+    // e.g. Google's "API key not valid": the key is there but wrong.
+    return new ModelError(`The API key in .env was rejected: ${message}`, 503);
+  }
   if (/api key/i.test(message)) {
-    return new ModelError(`Model not configured: ${message}`, 503);
+    // Mastra's own message names env vars and model ids; this is shown in the UI as is.
+    const fix = /GOOGLE_GENERATIVE_AI_API_KEY/.test(message)
+      ? "Add GOOGLE_GENERATIVE_AI_API_KEY to .env (free key: https://aistudio.google.com/apikey) and restart the server."
+      : `Add the API key for ENZYME_MODEL's provider to .env and restart the server. (${message})`;
+    return new ModelError(`The AI model has no API key. ${fix}`, 503);
   }
   return new ModelError(`Model call failed: ${message}`, 502);
 }

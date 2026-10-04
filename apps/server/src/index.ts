@@ -14,7 +14,9 @@ if (interrupted > 0) console.log(`marked ${interrupted} interrupted pull(s) as f
 
 const model = process.env.ENZYME_MODEL || DEFAULT_MODEL;
 if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY && model.startsWith("google/")) {
-  console.warn("GOOGLE_GENERATIVE_AI_API_KEY is not set: study cards will fail until it is");
+  console.warn(
+    "GOOGLE_GENERATIVE_AI_API_KEY is not set: searches and pulls work, but study cards and Suggest query will fail until it is",
+  );
 }
 const mastra = createEnzymeMastra(
   model,
