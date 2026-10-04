@@ -11,3 +11,6 @@ data/
 .DS_Store
 *.log
 .vite/
+
+# Benchmark resume journal (results are the .csv/.json/.md next to it)
+bench/results/*.jsonl

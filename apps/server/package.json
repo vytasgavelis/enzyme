@@ -12,6 +12,7 @@
     "epmc": "tsx src/scripts/epmc.ts",
     "cards": "tsx --env-file-if-exists=../../.env src/scripts/cards.ts",
     "traces": "tsx --env-file-if-exists=../../.env src/scripts/traces.ts",
+    "bench": "tsx --env-file-if-exists=../../.env src/scripts/bench.ts",
     "typecheck": "tsc -p tsconfig.json",
     "db:generate": "drizzle-kit generate",
     "db:generate:custom": "drizzle-kit generate --custom",

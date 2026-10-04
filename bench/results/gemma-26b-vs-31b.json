@@ -1,0 +1,1678 @@
+{
+  "name": "gemma-26b-vs-31b",
+  "models": [
+    "google/gemma-4-26b-a4b-it",
+    "google/gemma-4-31b-it"
+  ],
+  "judges": {
+    "google/gemma-4-26b-a4b-it": "google/gemma-4-31b-it",
+    "google/gemma-4-31b-it": "google/gemma-4-26b-a4b-it"
+  },
+  "paperIds": [
+    79,
+    93,
+    181,
+    253,
+    676,
+    692,
+    705,
+    1041,
+    1192,
+    1221,
+    1273,
+    1425
+  ],
+  "wallMs": 57119,
+  "summaries": [
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "papers": 12,
+      "ok": 11,
+      "failures": {
+        "invalid-json": 1
+      },
+      "quoteCheckRate": 0.9875,
+      "unknownDiscipline": 0.9818181818181819,
+      "doseFundingGuesses": 1,
+      "faithfulness": 0.8387096774193549,
+      "judgedCards": 11,
+      "medianLatencyMs": 14242,
+      "maxLatencyMs": 16002,
+      "meanInputTokens": 1332.1818181818182,
+      "meanOutputTokens": 585.7272727272727,
+      "rateLimited": 0
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "papers": 12,
+      "ok": 10,
+      "failures": {
+        "timeout": 2
+      },
+      "quoteCheckRate": 0.9863013698630136,
+      "unknownDiscipline": 1,
+      "doseFundingGuesses": 0,
+      "faithfulness": 0.6904761904761905,
+      "judgedCards": 10,
+      "medianLatencyMs": 49436,
+      "maxLatencyMs": 81818,
+      "meanInputTokens": 1323.9,
+      "meanOutputTokens": 525.6,
+      "rateLimited": 0
+    }
+  ],
+  "details": [
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 79,
+      "card": {
+        "design": {
+          "value": "preventive model",
+          "quote": "preventive model",
+          "status": "stated"
+        },
+        "population": {
+          "value": "mice with acute alcohol intoxication",
+          "quote": "Mice with acute alcohol intoxication",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "Alcohol Relief Formula (ARF) containing soybean peptides, botanical extracts, and probiotics",
+          "quote": "Alcohol Relief Formula (ARF), composed of soybean peptides, botanical extracts, and probiotics",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "liver damage",
+          "quote": "liver damage",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "alleviated acute liver damage",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "ARF pretreatment alleviated acute liver damage and accelerated sobriety.",
+          "quote": "ARF pretreatment alleviated acute liver damage and accelerated sobriety.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In mice, an Alcohol Relief Formula containing probiotics, peptides, and botanical extracts helped prevent liver damage from acute alcohol intoxication.",
+        "plainSummary": "Researchers tested an Alcohol Relief Formula made of soybean peptides, botanical extracts, and probiotics in mice with acute alcohol intoxication. The formula helped alleviate liver damage and speed up sobriety by improving alcohol metabolism and gut microbiota. No specific dose or duration was provided."
+      },
+      "reasons": {
+        "quote-check-rate": "6 of 6 values verified, 0 suspect, 6 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: The formula worked by improving alcohol metabolism and gut microbiota."
+      },
+      "unsupportedClaims": [
+        "The formula worked by improving alcohol metabolism and gut microbiota."
+      ]
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 79,
+      "card": null,
+      "reasons": {},
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 93,
+      "card": {
+        "design": {
+          "value": "DSS-induced colitis mice model and LPS-stimulated NCM460 cell inflammation model",
+          "quote": "A DSS-induced colitis mice model and a LPS-stimulated NCM460 cell inflammation model were used",
+          "status": "stated"
+        },
+        "population": {
+          "value": "DSS-induced colitis mice and LPS-stimulated NCM460 cells",
+          "quote": "DSS-induced colitis mice model and a LPS-stimulated NCM460 cell inflammation model",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "melatonin (MT)",
+          "quote": "MT",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "SIRT1 inhibitor (Ex-527) and pAMPK inhibitor (Compound C)",
+          "quote": "Ex-527 (the SIRT1 inhibitor) and Compound C (the pAMPK inhibitor) abolished the protective effects of MT in DSS mice",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "repairing the intestinal mucosal barrier",
+          "quote": "repairing the intestinal mucosal barrier in IBD",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "MT enhances intestinal antimicrobial peptides and effectively alleviates colitis",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "MT enhances antimicrobial peptides, alleviates colitis, restores Akkermansia, and decreases Desulfovibrio",
+          "quote": "MT enhances intestinal antimicrobial peptides and effectively alleviates colitis. Mechanistically, MT restored the abundance of the probiotic Akkermansia and decreased the conditional pathogen Desulfovibrio.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In mice and cells, melatonin may alleviate colitis by improving gut microbiota and strengthening the intestinal barrier via the SIRT1-LKB1-pAMPK pathway.",
+        "plainSummary": "Researchers tested melatonin in mice with colitis and in inflammatory cell models. They found melatonin helps alleviate colitis by regulating gut bacteria and reinforcing the intestinal barrier. This effect appears to work through the activation of the SIRT1-LKB1-pAMPK pathway."
+      },
+      "reasons": {
+        "quote-check-rate": "7 of 7 values verified, 0 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 93,
+      "card": {
+        "design": {
+          "value": "DSS-induced colitis mice model and LPS-stimulated NCM460 cell inflammation model",
+          "quote": "A DSS-induced colitis mice model and a LPS-stimulated NCM460 cell inflammation model",
+          "status": "stated"
+        },
+        "population": {
+          "value": "IBD patients, colitis mice, and NCM460 cells",
+          "quote": "IBD patients, A DSS-induced colitis mice model and a LPS-stimulated NCM460 cell inflammation model",
+          "status": "suspect"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "melatonin",
+          "quote": "melatonin",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "repairing the intestinal mucosal barrier in IBD",
+          "quote": "repairing the intestinal mucosal barrier in IBD",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "effectively alleviates colitis",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "MT enhances intestinal antimicrobial peptides and effectively alleviates colitis",
+          "quote": "MT enhances intestinal antimicrobial peptides and effectively alleviates colitis",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Melatonin may improve colitis by repairing the intestinal barrier and regulating gut bacteria in mice and cells.",
+        "plainSummary": "Researchers tested melatonin in mice with colitis and inflamed cells. Melatonin helped repair the intestinal barrier and improved gut bacteria. The study found that these effects were linked to the activation of the SIRT1-LKB1-pAMPK pathway."
+      },
+      "reasons": {
+        "quote-check-rate": "5 of 6 values verified, 1 suspect, 6 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: Melatonin may improve colitis by repairing the intestinal barrier and regulating gut bacteria in mice and cells. | Melatonin helped repair the intestinal barrier and improved gut bacteria."
+      },
+      "unsupportedClaims": [
+        "Melatonin may improve colitis by repairing the intestinal barrier and regulating gut bacteria in mice and cells.",
+        "Melatonin helped repair the intestinal barrier and improved gut bacteria."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 181,
+      "card": {
+        "design": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "population": {
+          "value": "327 patients with inflammatory bowel disease",
+          "quote": "327 patients with IBD",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "327 patients",
+          "quote": "327 patients with IBD",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "systemic antibody responses against 344,000 peptide antigens",
+          "quote": "systemic antibodies against 344,000 rationally selected peptide antigens",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "fatigue severity",
+          "quote": "fatigue severity",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "mixed",
+          "quote": "These patterns were not statistically robust",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "No individual antibody was significant after correction, but aggregation-based analyses showed recurring differences involving EBV, influenza, and Staphylococcus antigens.",
+          "quote": "No individual antibody remained significant after multiple testing correction. However, aggregation-based analyses identified recurring differences involving Epstein-Barr virus (EBV), influenza virus, and Staphylococcus antigens.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": "patterns were not statistically robust and may reflect random variation or disease/exposure-related factors",
+          "quote": "These patterns were not statistically robust and may reflect random variation or disease-/exposure-related factors.",
+          "status": "stated"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In patients with IBD, antibody patterns against certain viruses and bacteria were linked to fatigue, but these findings were not statistically robust.",
+        "plainSummary": "Researchers studied antibody responses against 344,000 antigens in 327 patients with inflammatory bowel disease to see if they related to fatigue. While some patterns involving EBV, influenza, and Staphylococcus were identified, they were not statistically robust and might be due to random variation."
+      },
+      "reasons": {
+        "quote-check-rate": "7 of 7 values verified, 0 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 181,
+      "card": {
+        "design": {
+          "value": "Phage-display immunoprecipitation sequencing (PhIP-Seq) profiling",
+          "quote": "Phage-display immunoprecipitation sequencing (PhIP-Seq) was used to profile systemic antibodies",
+          "status": "stated"
+        },
+        "population": {
+          "value": "patients with inflammatory bowel disease (IBD)",
+          "quote": "patients with IBD",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "327 patients",
+          "quote": "327 patients with IBD",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "systemic antibodies against 344,000 peptide antigens",
+          "quote": "systemic antibodies against 344,000 rationally selected peptide antigens",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "associations with fatigue severity",
+          "quote": "associations with fatigue severity",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "mixed",
+          "quote": "These patterns were not statistically robust",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "No individual antibody remained significant after multiple testing correction",
+          "quote": "No individual antibody remained significant after multiple testing correction",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": "patterns were not statistically robust and may reflect random variation or disease-/exposure-related factors",
+          "quote": "These patterns were not statistically robust and may reflect random variation or disease-/exposure-related factors",
+          "status": "stated"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "A study of 327 IBD patients found no statistically robust link between specific antibodies and fatigue severity.",
+        "plainSummary": "Researchers tested systemic antibodies against 344,000 antigens in 327 patients with inflammatory bowel disease to see if they linked to fatigue. While some patterns involving EBV, influenza, and Staphylococcus were noted, no individual antibody remained significant after correction. These findings were not statistically robust and may be due to random variation."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: While some patterns involving EBV, influenza, and Staphylococcus were noted, no individual antibody remained significant after correction."
+      },
+      "unsupportedClaims": [
+        "While some patterns involving EBV, influenza, and Staphylococcus were noted, no individual antibody remained significant after correction."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 253,
+      "card": {
+        "design": {
+          "value": "rat model study",
+          "quote": "A chronic-acute combined stress (CACS)-induced rat model of IBS-D complicated with depression was established and treated with LMWPs.",
+          "status": "stated"
+        },
+        "population": {
+          "value": "rats with IBS-D and depression",
+          "quote": "rat model of IBS-D complicated with depression",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "Low-molecular-weight peptides (LMWPs) from Musca domestica larvae",
+          "quote": "Low-molecular-weight peptides (LMWPs) from Musca domestica larvae",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "trimebutine maleate",
+          "quote": "effects similar to trimebutine maleate",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "intestinal and depressive behavioral phenotypes",
+          "quote": "intestinal and depressive behavioral phenotypes",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "LMWPs alleviated",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "LMWPs alleviated symptoms similarly to trimebutine maleate",
+          "quote": "CACS triggered typical comorbid symptoms, which LMWPs alleviated with effects similar to trimebutine maleate.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In rats, low-molecular-weight peptides from Musca domestica larvae alleviated symptoms of IBS-D and depression.",
+        "plainSummary": "Researchers tested low-molecular-weight peptides from Musca domestica larvae in a rat model of IBS-D and depression. The peptides alleviated symptoms similarly to trimebutine maleate by modulating gut microbiota, SCFAs, and serum metabolism."
+      },
+      "reasons": {
+        "quote-check-rate": "7 of 7 values verified, 0 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 253,
+      "card": {
+        "design": {
+          "value": "chronic-acute combined stress (CACS)-induced rat model",
+          "quote": "chronic-acute combined stress (CACS)-induced rat model",
+          "status": "stated"
+        },
+        "population": {
+          "value": "rat model of IBS-D complicated with depression",
+          "quote": "rat model of IBS-D complicated with depression",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "Low-molecular-weight peptides (LMWPs) from Musca domestica larvae",
+          "quote": "Low-molecular-weight peptides (LMWPs) from Musca domestica larvae",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "trimebutine maleate",
+          "quote": "trimebutine maleate",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "intestinal and depressive behavioral phenotypes",
+          "quote": "intestinal and depressive behavioral phenotypes",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "alleviated",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "LMWPs alleviated with effects similar to trimebutine maleate",
+          "quote": "LMWPs alleviated with effects similar to trimebutine maleate",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Peptides from housefly larvae improved symptoms of IBS-D and depression in rats.",
+        "plainSummary": "Researchers tested low-molecular-weight peptides from Musca domestica larvae in rats with IBS-D and depression. The peptides improved intestinal and depressive symptoms with effects similar to trimebutine maleate. This happened by changing gut bacteria, serum metabolites, and fecal SCFA levels."
+      },
+      "reasons": {
+        "quote-check-rate": "7 of 7 values verified, 0 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 676,
+      "card": {
+        "design": {
+          "value": "Mendelian randomization and machine learning",
+          "quote": "Mendelian randomization (MR) and machine learning (ML)",
+          "status": "stated"
+        },
+        "population": {
+          "value": "nationally representative data",
+          "quote": "nationally representative data",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "42 lifestyle and dietary exposures",
+          "quote": "42 lifestyle and dietary exposures",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "1990 to 2021",
+          "quote": "Between 1990 and 2021",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "causal links between lifestyle, dietary factors, and RA",
+          "quote": "causal links between lifestyle, dietary factors, and RA",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "mixed",
+          "quote": null,
+          "status": "suspect"
+        },
+        "effectSummary": {
+          "value": "obesity, current smoking, sleeplessness, poultry intake, and salt added to food are risk factors; never smoking, pork consumption, and cheese intake are protective",
+          "quote": "MR identified obesity, current smoking, sleeplessness, poultry intake, and salt added to food as RA risk factors, while never smoking, pork consumption, and cheese intake were protective.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Obesity, smoking, and certain dietary factors are linked to rheumatoid arthritis risk in an analysis of lifestyle and dietary exposures.",
+        "plainSummary": "This study used Mendelian randomization and machine learning to investigate how lifestyle and diet affect rheumatoid arthritis risk. It found that obesity, smoking, sleeplessness, poultry, and added salt are risk factors, while never smoking, pork, and cheese are protective."
+      },
+      "reasons": {
+        "quote-check-rate": "6 of 7 values verified, 1 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 676,
+      "card": {
+        "design": {
+          "value": "integrated analysis combining Mendelian randomization, machine learning, and evaluation of burden dynamics and health inequality",
+          "quote": "integrated analysis combining Mendelian randomization, machine learning, and evaluation of burden dynamics and health inequality",
+          "status": "stated"
+        },
+        "population": {
+          "value": "nationally representative data",
+          "quote": "nationally representative data",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "42 lifestyle and dietary exposures",
+          "quote": "42 lifestyle and dietary exposures",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "Between 1990 and 2021",
+          "quote": "Between 1990 and 2021",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "causal links between lifestyle, dietary factors, and RA",
+          "quote": "causal links between lifestyle, dietary factors, and RA",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "mixed",
+          "quote": "MR identified obesity, current smoking, sleeplessness, poultry intake, and salt added to food as RA risk factors, while never smoking, pork consumption, and cheese intake were protective",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "obesity, current smoking, sleeplessness, poultry intake, and salt added to food were risk factors; never smoking, pork consumption, and cheese intake were protective",
+          "quote": "MR identified obesity, current smoking, sleeplessness, poultry intake, and salt added to food as RA risk factors, while never smoking, pork consumption, and cheese intake were protective",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Certain lifestyle and dietary factors, such as smoking and obesity, are linked to an increased risk of rheumatoid arthritis.",
+        "plainSummary": "This study used genetic and data analysis to test 42 lifestyle and dietary factors for their link to rheumatoid arthritis. Obesity, current smoking, sleeplessness, poultry intake, and added salt were risk factors, while never smoking, pork, and cheese were protective. Global burden of the disease rose between 1990 and 2021."
+      },
+      "reasons": {
+        "quote-check-rate": "7 of 7 values verified, 0 suspect, 5 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: Global burden of the disease rose between 1990 and 2021."
+      },
+      "unsupportedClaims": [
+        "Global burden of the disease rose between 1990 and 2021."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 692,
+      "card": {
+        "design": {
+          "value": "single-arm, open-label pilot study",
+          "quote": "single-arm, open-label pilot study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "9 adults with rheumatoid arthritis (7 females, 2 males, aged 40-63 years)",
+          "quote": "nine adults with RA",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "9 adults",
+          "quote": "nine adults",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "8-week Autoimmune Protocol (AIP) diet",
+          "quote": "8-week AIP diet",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "usual diet",
+          "quote": "followed their usual diet for 4 weeks",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "8 weeks",
+          "quote": "8-week AIP diet",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "RAPID3 and RAID scores",
+          "quote": "Routine Assessment of Patient Index Data 3 (RAPID3) and RA Impact of Disease (RAID)",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "mean RAPID3 scores decreased",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "mean RAPID3 scores decreased from 2.73/10 to 0.99; mean RAID scores decreased from 3.13/10 to 1.02",
+          "quote": "mean RAPID3 scores decreased from 2.73/10 (range 0.2-5.37) to 0.99 (0-2.5).",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "An 8-week AIP diet was associated with improved patient-reported outcomes in seven of nine adults with rheumatoid arthritis.",
+        "plainSummary": "This pilot study tested an 8-week Autoimmune Protocol (AIP) diet in nine adults with rheumatoid arthritis. Following the diet, participants saw improvements in RAPID3 and RAID scores, as well as fatigue, sleep, and pain. Further controlled trials are needed to confirm these findings."
+      },
+      "reasons": {
+        "quote-check-rate": "9 of 9 values verified, 0 suspect, 3 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: improved patient-reported outcomes occurred in seven of nine adults with rheumatoid arthritis | participants saw improvements in fatigue, sleep, and pain | Further controlled trials are needed to confirm these findings"
+      },
+      "unsupportedClaims": [
+        "improved patient-reported outcomes occurred in seven of nine adults with rheumatoid arthritis",
+        "participants saw improvements in fatigue, sleep, and pain",
+        "Further controlled trials are needed to confirm these findings"
+      ]
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 692,
+      "card": {
+        "design": {
+          "value": "single-arm, open-label pilot study",
+          "quote": "single-arm, open-label pilot study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "adults with rheumatoid arthritis",
+          "quote": "adults with RA",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "9 adults",
+          "quote": "nine adults",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "Autoimmune Protocol (AIP) diet",
+          "quote": "Autoimmune Protocol (AIP) diet",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "usual diet",
+          "quote": "usual diet",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "8 weeks",
+          "quote": "8-week AIP diet",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "RAPID3 and RAID scores",
+          "quote": "Routine Assessment of Patient Index Data 3 (RAPID3) and RA Impact of Disease (RAID)",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "improvements in PROs",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "mean RAPID3 scores decreased from 2.73/10 to 0.99",
+          "quote": "mean RAPID3 scores decreased from 2.73/10 (range 0.2-5.37) to 0.99 (0-2.5)",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "An 8-week AIP diet was associated with improved patient-reported outcomes in seven of nine adults with rheumatoid arthritis.",
+        "plainSummary": "Researchers tested the feasibility and effectiveness of an Autoimmune Protocol (AIP) diet in nine adults with rheumatoid arthritis. Participants followed their usual diet for 4 weeks and then the AIP diet for 8 weeks. Most participants showed improvements in disease impact and activity scores, though these pilot findings require further controlled trials to confirm efficacy."
+      },
+      "reasons": {
+        "quote-check-rate": "9 of 9 values verified, 0 suspect, 3 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: An 8-week AIP diet was associated with improved patient-reported outcomes in seven of nine adults with rheumatoid arthritis. | Participants followed their usual diet for 4 weeks and then the AIP diet for 8 weeks. | these pilot findings require further controlled trials to confirm efficacy."
+      },
+      "unsupportedClaims": [
+        "An 8-week AIP diet was associated with improved patient-reported outcomes in seven of nine adults with rheumatoid arthritis.",
+        "Participants followed their usual diet for 4 weeks and then the AIP diet for 8 weeks.",
+        "these pilot findings require further controlled trials to confirm efficacy."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 705,
+      "card": {
+        "design": {
+          "value": "prospective study",
+          "quote": "In this prospective study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "34 patients with AD",
+          "quote": "34 patients with AD",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "34 patients",
+          "quote": "34 patients",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "mineral salts and natural antioxidants agents",
+          "quote": "treatment based on mineral salts and natural antioxidants agents",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "14 days",
+          "quote": "14 days",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "EASI, SCORAD, BSA, and vIGA-AD",
+          "quote": "Eczema Area and Severity Index (EASI), Scoring Atopic Dermatitis (SCORAD), Body Surface Area (BSA), and Validated Investigator Global Assessment for Atopic Dermatitis (vIGA-AD)",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "All clinical and patient-reported measurements showed a strong difference before and after treatment.",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "All clinical and patient-reported measurements showed a strong difference; epidermis thickness, lymphocyte infiltration, and specific cell counts were significantly reduced.",
+          "quote": "All clinical and patient-reported measurements showed a strong difference before and after treatment. The epidermis thickness was significantly reduced, as well as the lymphocyte infiltration and the reduction of CD3, CD4, CD8, CD20 and CD117 cells.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "A treatment of mineral salts and natural antioxidants drastically reduced atopic dermatitis severity in 34 patients over 14 days.",
+        "plainSummary": "In a prospective study of 34 patients with atopic dermatitis, a treatment of mineral salts and natural antioxidants agents was tested for 14 days. All clinical and patient-reported measurements showed a strong improvement, including reduced skin thickness and inflammation. No adverse events were observed."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: No adverse events were observed."
+      },
+      "unsupportedClaims": [
+        "No adverse events were observed."
+      ]
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 705,
+      "card": {
+        "design": {
+          "value": "prospective study",
+          "quote": "prospective study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "patients with atopic dermatitis",
+          "quote": "patients with AD",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "34 patients",
+          "quote": "34 patients",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "mineral salts and natural antioxidants agents",
+          "quote": "mineral salts and natural antioxidants agents",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": "14 days",
+          "quote": "14 days",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "EASI, SCORAD, BSA, and vIGA-AD",
+          "quote": "Eczema Area and Severity Index (EASI), Scoring Atopic Dermatitis (SCORAD), Body Surface Area (BSA), and Validated Investigator Global Assessment for Atopic Dermatitis (vIGA-AD)",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "drastically reduced",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "All clinical and patient-reported measurements showed a strong difference before and after treatment",
+          "quote": "All clinical and patient-reported measurements showed a strong difference before and after treatment",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Treatment with mineral salts and natural antioxidants agents drastically reduced the severity of atopic dermatitis in 34 patients.",
+        "plainSummary": "Researchers tested a treatment using mineral salts and natural antioxidants agents in 34 patients with atopic dermatitis for 14 days. All clinical and patient-reported measurements showed a strong difference after treatment, and no adverse events were observed. No comparator group was mentioned."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: no adverse events were observed. | No comparator group was mentioned."
+      },
+      "unsupportedClaims": [
+        "no adverse events were observed.",
+        "No comparator group was mentioned."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 1041,
+      "card": {
+        "design": {
+          "value": "rat model of ulcerative colitis",
+          "quote": "rat model of ulcerative colitis induced by dextran sulfate sodium administration",
+          "status": "stated"
+        },
+        "population": {
+          "value": "rats",
+          "quote": "rat model of ulcerative colitis",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "creatine supplementation",
+          "quote": "creatine supplementation",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "colitis-induced changes",
+          "quote": "colitis-induced",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": "oral supplementation",
+          "quote": "oral supplementation",
+          "status": "stated"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "hippocampal structural integrity and electrophysiological function",
+          "quote": "structural integrity and electrophysiological function of hippocampal cornu ammonis 1 (CA1) pyramidal neurons",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "creatine supplementation was highly effective in both sexes and prevented colitis-induced hippocampal neuroinflammation, microglial activation, neuronal damage, and electrophysiological dysfunction.",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "creatine prevented neuroinflammation, microglial activation, neuronal damage, and electrophysiological dysfunction in both sexes",
+          "quote": "creatine supplementation was highly effective in both sexes and prevented colitis-induced hippocampal neuroinflammation, microglial activation, neuronal damage, and electrophysiological dysfunction.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Oral creatine supplementation prevented brain inflammation and neuronal damage caused by colitis in both male and female rats.",
+        "plainSummary": "Researchers tested if oral creatine supplementation could prevent brain damage in rats with colitis. Creatine was highly effective in both sexes, preventing neuroinflammation, microglial activation, and neuronal damage."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "Guessed: doseOrRegimen",
+        "summary-faithfulness": "Unsupported: Creatine was highly effective in both sexes"
+      },
+      "unsupportedClaims": [
+        "Creatine was highly effective in both sexes"
+      ]
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 1041,
+      "card": {
+        "design": {
+          "value": "rat model of ulcerative colitis",
+          "quote": "rat model of ulcerative colitis",
+          "status": "stated"
+        },
+        "population": {
+          "value": "male and female rats",
+          "quote": "male rats",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "oral creatine supplementation",
+          "quote": "oral supplementation",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "hippocampal neuroinflammation, neuronal damage, and electrophysiological dysfunction",
+          "quote": "hippocampal neuroinflammation, neuronal damage, and electrophysiological dysfunction",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "highly effective in both sexes and prevented",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "prevented colitis-induced hippocampal neuroinflammation, microglial activation, neuronal damage, and electrophysiological dysfunction",
+          "quote": "prevented colitis-induced hippocampal neuroinflammation, microglial activation, neuronal damage, and electrophysiological dysfunction",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Oral creatine supplementation prevented brain inflammation and neuronal damage in rats with chronic colitis.",
+        "plainSummary": "Researchers tested oral creatine supplementation in rats with chronic colitis. The study found that creatine prevented brain inflammation, neuronal damage, and electrical dysfunction in both male and female rats. Male rats showed more severe brain damage from colitis than females."
+      },
+      "reasons": {
+        "quote-check-rate": "6 of 6 values verified, 0 suspect, 6 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: Male rats showed more severe brain damage from colitis than females."
+      },
+      "unsupportedClaims": [
+        "Male rats showed more severe brain damage from colitis than females."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 1192,
+      "card": null,
+      "reasons": {},
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 1192,
+      "card": null,
+      "reasons": {},
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 1221,
+      "card": {
+        "design": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "population": {
+          "value": "young mice",
+          "quote": "young mice",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "fermented goat milk powder",
+          "quote": "Fermented goat milk powder",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "intestinal development, gut microbiota composition, and splenic antioxidant capacity",
+          "quote": "intestinal development, gut microbiota composition, and splenic antioxidant capacity",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "Fermented goat milk powder supports intestinal development and inhibits splenic ferroptosis via the ACSL4/ALOX15 pathway, enhancing antioxidant status.",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "increased body weight, elevated SOD, CAT, and GSH-Px activities, reduced MDA levels, increased villus height, and decreased crypt depth",
+          "quote": "Supplementation increased body weight and significantly elevated serum SOD, CAT, and GSH-Px activities while reducing MDA levels. It promoted intestinal development, evidenced by increased villus height and decreased crypt depth in the jejunum and ileum.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Fermented goat milk powder supports intestinal development and improves antioxidant function in young mice.",
+        "plainSummary": "This study tested the effects of fermented goat milk powder in young mice. The powder increased body weight, promoted intestinal development, and enhanced antioxidant capacity in the spleen."
+      },
+      "reasons": {
+        "quote-check-rate": "5 of 5 values verified, 0 suspect, 7 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 1221,
+      "card": {
+        "design": {
+          "value": "study",
+          "quote": "This study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "young mice",
+          "quote": "young mice",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "Fermented goat milk powder",
+          "quote": "Fermented goat milk powder",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "intestinal development, gut microbiota composition, and splenic antioxidant capacity",
+          "quote": "intestinal development, gut microbiota composition, and splenic antioxidant capacity",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "promotes intestinal development and enhances splenic antioxidant function",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "increased body weight and significantly elevated serum SOD, CAT, and GSH-Px activities while reducing MDA levels",
+          "quote": "increased body weight and significantly elevated serum SOD, CAT, and GSH-Px activities while reducing MDA levels",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Fermented goat milk powder improved intestinal development and antioxidant function in young mice.",
+        "plainSummary": "Researchers tested the effects of fermented goat milk powder in young mice. The powder increased body weight, improved intestinal development, and enhanced antioxidant capacity in the spleen. No limitations were mentioned in the abstract."
+      },
+      "reasons": {
+        "quote-check-rate": "6 of 6 values verified, 0 suspect, 6 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: No limitations were mentioned in the abstract."
+      },
+      "unsupportedClaims": [
+        "No limitations were mentioned in the abstract."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 1273,
+      "card": {
+        "design": {
+          "value": "mouse model of neuroinflammation",
+          "quote": "evaluated its neuroprotective effects in a high-fructose diet (HFrD)-induced mouse model of neuroinflammation",
+          "status": "stated"
+        },
+        "population": {
+          "value": "high-fructose diet (HFrD)-induced mice",
+          "quote": "high-fructose diet (HFrD)-induced mouse model",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "theasinensin C (TSC, > 98%)",
+          "quote": "theasinensin C (TSC, > 98%)",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": "150 mg/kg/day",
+          "quote": "150 mg/kg/day",
+          "status": "stated"
+        },
+        "duration": {
+          "value": "8 weeks",
+          "quote": "8 weeks",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "neuroprotective effects",
+          "quote": "neuroprotective effects",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "TSC improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity.",
+          "quote": "TSC (150 mg/kg/day, 8 weeks) improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity.",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In mice, theasinensin C improved cognition and reduced neuroinflammation by enriching gut bacteria and driving creatine production.",
+        "plainSummary": "Researchers tested the effects of theasinensin C (TSC) in mice with neuroinflammation induced by a high-fructose diet. TSC, given at 150 mg/kg/day for 8 weeks, improved cognition and reduced inflammation by enriching Akkermansia muciniphila and increasing creatine. This process involves a metabolic relay between the gut, kidney, and liver."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": ""
+      },
+      "unsupportedClaims": []
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 1273,
+      "card": {
+        "design": {
+          "value": "mouse model",
+          "quote": "mouse model",
+          "status": "stated"
+        },
+        "population": {
+          "value": "high-fructose diet (HFrD)-induced mouse model of neuroinflammation",
+          "quote": "high-fructose diet (HFrD)-induced mouse model of neuroinflammation",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "interventionOrExposure": {
+          "value": "theasinensin C (TSC, > 98%)",
+          "quote": "theasinensin C (TSC, > 98%)",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "doseOrRegimen": {
+          "value": "150 mg/kg/day",
+          "quote": "150 mg/kg/day",
+          "status": "stated"
+        },
+        "duration": {
+          "value": "8 weeks",
+          "quote": "8 weeks",
+          "status": "stated"
+        },
+        "primaryOutcome": {
+          "value": "neuroprotective effects",
+          "quote": "neuroprotective effects",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity",
+          "quote": "improved cognition, reduced pro-inflammatory cytokines, mitigated neuropathology, and restored intestinal barrier integrity",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Theasinensin C reduced neuroinflammation and improved cognition in mice fed a high-fructose diet.",
+        "plainSummary": "Researchers tested theasinensin C in mice with neuroinflammation caused by a high-fructose diet. The treatment improved cognition and reduced inflammation by enriching Akkermansia muciniphila and increasing creatine levels. No limitations were stated."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: No limitations were stated."
+      },
+      "unsupportedClaims": [
+        "No limitations were stated."
+      ]
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "paperId": 1425,
+      "card": {
+        "design": {
+          "value": "retrospective single-center study",
+          "quote": "retrospective single-center study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "patients with immune-mediated necrotizing myopathy (IMNM)",
+          "quote": "IMNM patients",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "35 patients",
+          "quote": "35 patients",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "cyclophosphamide (CTX)",
+          "quote": "cyclophosphamide (CTX)",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "methotrexate (MTX)",
+          "quote": "methotrexate (MTX)",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "proportion of patients with >50% decrease in creatine kinase (CK)",
+          "quote": "proportion of patients whose creatine kinase (CK) decreased by more than 50%",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "CTX achieved greater improvements in CK, LDH, and AST levels compared to MTX",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "94.7% in CTX group vs 62.5% in MTX group (P < 0.05) for >50% CK decrease",
+          "quote": "the proportion of patients whose creatine kinase (CK) decreased by more than 50% was higher in the CTX group (18 cases, 94.7%) than in the MTX group (10 cases, 62.5%; P < 0.05)",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "In patients with IMNM, cyclophosphamide achieved greater improvements in CK, LDH, and AST levels than methotrexate.",
+        "plainSummary": "This retrospective study compared cyclophosphamide and methotrexate in 35 patients with immune-mediated necrotizing myopathy. Cyclophosphamide resulted in greater reductions in CK, LDH, and AST levels compared to methotrexate."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: In patients with IMNM, cyclophosphamide achieved greater improvements in LDH levels than methotrexate | In patients with IMNM, cyclophosphamide achieved greater improvements in AST levels than methotrexate | Cyclophosphamide resulted in greater reductions in LDH levels compared to methotrexate | Cyclophosphamide resulted in greater reductions in AST levels compared to methotrexate"
+      },
+      "unsupportedClaims": [
+        "In patients with IMNM, cyclophosphamide achieved greater improvements in LDH levels than methotrexate",
+        "In patients with IMNM, cyclophosphamide achieved greater improvements in AST levels than methotrexate",
+        "Cyclophosphamide resulted in greater reductions in LDH levels compared to methotrexate",
+        "Cyclophosphamide resulted in greater reductions in AST levels compared to methotrexate"
+      ]
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "paperId": 1425,
+      "card": {
+        "design": {
+          "value": "retrospective single-center study",
+          "quote": "retrospective single-center study",
+          "status": "stated"
+        },
+        "population": {
+          "value": "patients with immune-mediated necrotizing myopathy (IMNM)",
+          "quote": "patients",
+          "status": "stated"
+        },
+        "sampleSize": {
+          "value": "35 patients",
+          "quote": "35 patients",
+          "status": "stated"
+        },
+        "interventionOrExposure": {
+          "value": "cyclophosphamide (CTX)",
+          "quote": "cyclophosphamide (CTX)",
+          "status": "stated"
+        },
+        "comparator": {
+          "value": "methotrexate (MTX)",
+          "quote": "methotrexate (MTX)",
+          "status": "stated"
+        },
+        "doseOrRegimen": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "duration": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "primaryOutcome": {
+          "value": "proportion of patients with >50% decrease in creatine kinase (CK)",
+          "quote": "proportion of patients whose creatine kinase (CK) decreased by more than 50%",
+          "status": "stated"
+        },
+        "resultDirection": {
+          "value": "improved",
+          "quote": "higher in the CTX group (18 cases, 94.7%) than in the MTX group (10 cases, 62.5%; P < 0.05)",
+          "status": "stated"
+        },
+        "effectSummary": {
+          "value": "94.7% of CTX patients had >50% CK decrease vs 62.5% of MTX patients (P < 0.05)",
+          "quote": "proportion of patients whose creatine kinase (CK) decreased by more than 50% was higher in the CTX group (18 cases, 94.7%) than in the MTX group (10 cases, 62.5%; P < 0.05)",
+          "status": "stated"
+        },
+        "limitations": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "fundingOrCoi": {
+          "value": null,
+          "quote": null,
+          "status": "unknown"
+        },
+        "takeaway": "Cyclophosphamide achieved greater improvements in muscle enzyme levels than methotrexate in patients with immune-mediated necrotizing myopathy.",
+        "plainSummary": "Researchers tested whether cyclophosphamide or methotrexate was more effective for treating patients with immune-mediated necrotizing myopathy. In this study of 35 patients, cyclophosphamide led to a greater proportion of patients seeing a 50% decrease in creatine kinase levels. Cyclophosphamide also resulted in greater reductions in LDH and AST levels."
+      },
+      "reasons": {
+        "quote-check-rate": "8 of 8 values verified, 0 suspect, 4 unknown",
+        "unknown-discipline": "No guesses",
+        "summary-faithfulness": "Unsupported: Cyclophosphamide also resulted in greater reductions in LDH and AST levels."
+      },
+      "unsupportedClaims": [
+        "Cyclophosphamide also resulted in greater reductions in LDH and AST levels."
+      ]
+    }
+  ]
+}
