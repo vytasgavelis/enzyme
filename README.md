@@ -10,24 +10,26 @@ Built in one weekend for the DEV Hacktoberfest 2026 Weekend Challenge, "Build fo
 
 ## Who it's for
 
-My friend has a master's in biochemistry, works in the field, and wants to start an honest
-supplement company and share evidence-based science online. Her problem is keeping up: every week
-brings new papers on the topics she cares about, many of them off-topic, animal studies or weak
+My friend has a master's in biochemistry, works in the field, and wants to create
+healthy-lifestyle content based on real, published evidence. Their problem is keeping up: every week
+brings new papers on the topics they care about, many of them off-topic, animal studies or weak
 designs, and each one a dense abstract to read before you know if it matters.
 
-General tools for this already exist. Enzyme is built for her: her topics (anti-inflammatory diet,
-autoimmune disease, gut health), her filters (human studies, RCTs and meta-analyses first), and
-facts she can check against the abstract herself rather than a summary she has to trust.
+General tools for this already exist. Enzyme is built for them: their topics (anti-inflammatory diet,
+autoimmune disease, gut health), their filters (human studies, RCTs and meta-analyses first), and
+facts they can check against the abstract themselves rather than a summary they have to trust.
+
+Their verdict: now scientists can research and summarise papers fast, and at scale.
 
 ## What it does
 
-- **Saved searches for her topics.** Each search is a Europe PMC query (Europe PMC includes PubMed
+- **Saved searches for their topics.** Each search is a Europe PMC query (Europe PMC includes PubMed
   and preprints). "Pull papers" fetches the newest 500 matching papers with an abstract into a
   local library, with live progress. Pull again later and only the new papers are marked **New**.
-- **Describe a topic in plain English, get a query.** She doesn't need to know Europe PMC's query
+- **Describe a topic in plain English, get a query.** They don't need to know Europe PMC's query
   syntax. "Suggest query" asks an AI agent to write one; the agent checks real hit counts with a
   tool and narrows or widens until the search returns a readable number of papers (50 to 5,000).
-  She can still edit the query by hand.
+  They can still edit the query by hand.
 - **Filters that don't use AI.** Study type (meta-analysis, systematic review, RCT, clinical trial,
   observational, review, case report), humans only, date, preprints, open access, retracted papers
   hidden, keyword search over titles and abstracts, and sorting by newest, strongest evidence or most cited. These
@@ -56,7 +58,7 @@ cd enzyme
 cp .env.example .env    # then paste your key into GOOGLE_GENERATIVE_AI_API_KEY (optional, see below)
 pnpm i
 pnpm db:migrate         # creates data/enzyme.db
-pnpm seed               # adds her six saved searches
+pnpm seed               # adds their six saved searches
 pnpm dev                # API on :3210, web app on http://localhost:5173
 ```
 
