@@ -197,7 +197,7 @@ function SearchForm({
           ))}
         </div>
         <p className="text-muted-foreground text-xs">
-          Only papers with an abstract are kept. Up to 500 papers per pull.
+          Only papers with an abstract are kept. Each pull keeps the newest 500.
         </p>
       </div>
 
