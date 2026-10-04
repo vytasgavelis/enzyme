@@ -11,7 +11,8 @@
       "**",
       "!apps/web/src/index.css",
       "!apps/web/src/components/ui",
-      "!apps/server/drizzle"
+      "!apps/server/drizzle",
+      "!bench/results"
     ]
   },
   "formatter": {
