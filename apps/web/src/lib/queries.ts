@@ -1,4 +1,10 @@
-import type { FeedPage, FeedQuery, PaperCard, SavedSearchInput } from "@enzyme/shared";
+import type {
+  FeedPage,
+  FeedQuery,
+  PaperCard,
+  SavedSearchInput,
+  SuggestQueryInput,
+} from "@enzyme/shared";
 import {
   type InfiniteData,
   keepPreviousData,
@@ -36,6 +42,19 @@ export function useSaveSearch() {
     mutationFn: ({ id, input }: { id?: number; input: SavedSearchInput }) =>
       id === undefined ? enzymeApi.createSearch(input) : enzymeApi.updateSearch(id, input),
     onSuccess: () => qc.invalidateQueries({ queryKey: keys.searches }),
+  });
+}
+
+/**
+ * The query agent usually answers in 6–15 s; give up after this and leave the dialog as it was
+ * (the name is still the fallback query).
+ */
+const SUGGEST_TIMEOUT_MS = 75_000;
+
+export function useSuggestQuery() {
+  return useMutation({
+    mutationFn: (input: SuggestQueryInput) =>
+      enzymeApi.suggestQuery(input, AbortSignal.timeout(SUGGEST_TIMEOUT_MS)),
   });
 }
 

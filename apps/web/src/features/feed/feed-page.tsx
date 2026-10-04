@@ -113,6 +113,7 @@ function Feed({ searchId }: { searchId: number }) {
                 <Pencil /> Edit
               </Button>
             </div>
+            {search.intent && <p className="mt-1 text-sm text-stone-700">{search.intent}</p>}
             <p className="mt-1 break-words font-mono text-stone-600 text-xs">{search.query}</p>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-2">

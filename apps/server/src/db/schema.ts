@@ -18,6 +18,8 @@ export const savedSearches = sqliteTable("saved_searches", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
   query: text("query").notNull(),
+  /** Plain-English description the query was suggested from (T-11); null when none. */
+  intent: text("intent"),
   createdAt: timestamp("created_at").notNull().default(nowMs),
   lastRunAt: timestamp("last_run_at"),
   lastViewedAt: timestamp("last_viewed_at"),

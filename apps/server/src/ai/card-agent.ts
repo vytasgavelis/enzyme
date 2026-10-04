@@ -55,15 +55,24 @@ ${cardFieldKeys
 }
 A fact the abstract does not state is {"quote": null, "value": null, "status": "unknown"}. takeaway and plainSummary are plain strings. No comments in the reply.`;
 
-/** Card generation through a Mastra agent on the model named by `modelId` (AI SDK model router). */
-export function createCardGenerator(modelId: string): GenerateCard {
-  const agent = new Agent({
+/** The study card agent on the model named by `modelId` (AI SDK model router). */
+export function createCardAgent(modelId: string) {
+  return new Agent({
     id: "study-card",
     name: "Study card extractor",
     instructions: INSTRUCTIONS,
     model: modelId,
   });
+}
 
+/**
+ * Card generation through a Mastra agent. Pass the agent registered in the app's `Mastra`
+ * instance (see `mastra.ts`) so its calls are traced; scripts can let it build its own.
+ */
+export function createCardGenerator(
+  modelId: string,
+  agent: Agent = createCardAgent(modelId),
+): GenerateCard {
   return async ({ title, abstract }) => {
     const started = Date.now();
     try {
@@ -95,10 +104,11 @@ export function createCardGenerator(modelId: string): GenerateCard {
   };
 }
 
-function toModelError(err: unknown): ModelError {
+/** Maps a failed model call to a `ModelError`; `timeoutMs` is the abort timeout it ran with. */
+export function toModelError(err: unknown, timeoutMs = TIMEOUT_MS): ModelError {
   if (err instanceof ModelError) return err;
   if (err instanceof DOMException && err.name === "TimeoutError") {
-    return new ModelError(`The model took longer than ${TIMEOUT_MS / 1000} s. Try again.`, 502);
+    return new ModelError(`The model took longer than ${timeoutMs / 1000} s. Try again.`, 502);
   }
   const status = (err as { statusCode?: number } | null)?.statusCode;
   const message = err instanceof Error ? err.message : String(err);

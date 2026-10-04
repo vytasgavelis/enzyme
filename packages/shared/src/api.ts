@@ -14,6 +14,8 @@ import type { FullTextUrl } from "./paper.js";
 // ---------------------------------------------------------------------------------------------
 // Saved searches (EN-1)
 
+const INTENT_MAX = 500;
+
 /**
  * `query` is Europe PMC syntax. When left empty the name is used as the query, so "magnesium
  * sleep" works without knowing the syntax.
@@ -21,6 +23,8 @@ import type { FullTextUrl } from "./paper.js";
 export const savedSearchInputSchema = z.object({
   name: z.string().trim().min(1, "Give the search a name").max(80),
   query: z.string().trim().max(2000).default(""),
+  /** What she is looking for in plain English (T-11); empty means none. */
+  intent: z.string().trim().max(INTENT_MAX).default(""),
 });
 
 export type SavedSearchInput = z.input<typeof savedSearchInputSchema>;
@@ -30,6 +34,8 @@ export interface SavedSearch {
   name: string;
   /** The query actually sent to Europe PMC (the name when the user left it empty). */
   query: string;
+  /** The plain-English description the query was suggested from, if any (T-11). */
+  intent: string | null;
   createdAt: string;
   lastRunAt: string | null;
   lastViewedAt: string | null;
@@ -38,6 +44,28 @@ export interface SavedSearch {
   newCount: number;
   /** The most recent pull, so the sidebar can show progress without a second request. */
   lastRun: PullRun | null;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Query suggestion (T-11, EN-25)
+
+/** `POST /api/searches/suggest-query` body. */
+export const suggestQueryInputSchema = z.object({
+  intent: z.string().trim().min(1, "Describe what you are looking for").max(INTENT_MAX),
+});
+
+export type SuggestQueryInput = z.input<typeof suggestQueryInputSchema>;
+
+/** Hit counts the query agent aims for: enough to be worth a feed, few enough to read. */
+export const USEFUL_HITS = { min: 50, max: 5000 } as const;
+
+/** A Europe PMC query the query agent wrote from a plain-English intent, with its checked count. */
+export interface QuerySuggestion {
+  query: string;
+  /** Europe PMC hits for `query` (papers with an abstract), counted by the server. */
+  hitCount: number;
+  /** One sentence on what the query covers. */
+  explanation: string;
 }
 
 // ---------------------------------------------------------------------------------------------

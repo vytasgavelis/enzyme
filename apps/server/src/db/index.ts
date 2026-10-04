@@ -3,7 +3,8 @@ import { fileURLToPath } from "node:url";
 import { createDb, migrateDb } from "./client.js";
 import * as schema from "./schema.js";
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
+/** The repository root, for paths in `.env` such as `DATABASE_PATH`. */
+export const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../../..");
 
 /** The app database. Tests should use `createDb(":memory:")` from `./client.js` instead. */
 export const db = createDb(resolve(repoRoot, process.env.DATABASE_PATH ?? "data/enzyme.db"));

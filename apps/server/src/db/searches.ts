@@ -55,6 +55,7 @@ function toSavedSearch(db: Db, row: typeof savedSearches.$inferSelect): SavedSea
     id: row.id,
     name: row.name,
     query: row.query,
+    intent: row.intent,
     createdAt: row.createdAt.toISOString(),
     lastRunAt: iso(row.lastRunAt),
     lastViewedAt: iso(row.lastViewedAt),
@@ -85,6 +86,7 @@ export function getSearchRow(db: Db, id: number) {
 export interface SearchFields {
   name: string;
   query: string;
+  intent: string | null;
 }
 
 export function createSearch(db: Db, fields: SearchFields): SavedSearch {

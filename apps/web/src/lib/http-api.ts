@@ -47,5 +47,7 @@ export const httpApi: EnzymeApi = {
   getLatestRun: (id) => ok(searches[":id"].pull.$get(param(id))),
   getFeed: (id, query) =>
     ok(searches[":id"].papers.$get({ ...param(id), query: feedParams(query) })),
+  suggestQuery: (input, signal) =>
+    ok(searches["suggest-query"].$post({ json: input }, { init: { signal } })),
   generateCard: (paperId) => ok(papers[":id"].card.$post(param(paperId))),
 };

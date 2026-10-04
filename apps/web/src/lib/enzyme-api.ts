@@ -3,8 +3,10 @@ import type {
   FeedQuery,
   PaperCard,
   PullRun,
+  QuerySuggestion,
   SavedSearch,
   SavedSearchInput,
+  SuggestQueryInput,
 } from "@enzyme/shared";
 
 /**
@@ -20,6 +22,7 @@ import type {
  * - startPull        POST   /api/searches/:id/pull     -> PullRun (202)
  * - getLatestRun     GET    /api/searches/:id/pull     -> PullRun | null
  * - getFeed          GET    /api/searches/:id/papers?<FeedQuery>
+ * - suggestQuery     POST   /api/searches/suggest-query -> QuerySuggestion (T-11)
  * - generateCard     POST   /api/papers/:id/card       -> PaperCard (201), the paper's new card
  */
 export interface EnzymeApi {
@@ -31,6 +34,8 @@ export interface EnzymeApi {
   startPull(id: number): Promise<PullRun>;
   getLatestRun(id: number): Promise<PullRun | null>;
   getFeed(id: number, query: FeedQuery): Promise<FeedPage>;
+  /** A Europe PMC query written by the query agent from a plain-English description. */
+  suggestQuery(input: SuggestQueryInput, signal?: AbortSignal): Promise<QuerySuggestion>;
   generateCard(paperId: number): Promise<PaperCard>;
 }
 
