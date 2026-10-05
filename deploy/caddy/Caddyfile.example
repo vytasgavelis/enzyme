@@ -1,0 +1,17 @@
+# Copy to Caddyfile and replace the domain and the password hash. One block per app.
+# Make a hash with: docker run --rm caddy:2 caddy hash-password --plaintext 'the-password'
+# After editing: docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
+
+enzyme.example.com {
+	# Enzyme has no login of its own, and every visitor spends your Gemini quota
+	basic_auth {
+		friend $2a$14$replace.with.the.output.of.caddy.hash-password
+	}
+	encode zstd gzip
+	reverse_proxy enzyme:3210
+}
+
+# Another app later, e.g.:
+# notes.example.com {
+# 	reverse_proxy notes:8080
+# }

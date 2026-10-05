@@ -1,0 +1,15 @@
+# Keep the build context small: only sources and manifests go into the image
+**/node_modules
+**/dist
+.git
+.claude
+.env
+.env.*
+!.env.example
+data
+**/*.db*
+apps/video/public
+apps/video/out
+bench/results
+docs
+deploy

@@ -1,0 +1,26 @@
+# The server's front door, shared by every app on it. Caddy takes ports 80 and 443, gets HTTPS
+# certificates by itself and forwards each domain to its app over the "web" network.
+# Copy this folder to the server (e.g. /srv/caddy), add a Caddyfile, then: docker compose up -d
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - web
+
+volumes:
+  # Certificates live here; keep it so restarts don't request new ones
+  caddy-data:
+  caddy-config:
+
+networks:
+  web:
+    name: web

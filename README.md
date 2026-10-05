@@ -101,8 +101,58 @@ Everything is read from `.env` in the repository root. [`.env.example`](.env.exa
 | `WEB_HOST` | `localhost` | Web dev server host. `0.0.0.0` makes it reachable from outside a VM. |
 | `DATABASE_PATH` | `./data/enzyme.db` | The SQLite database, relative to the repository root. |
 | `TRACES_PATH` | `./data/mastra.db` | Where Mastra stores agent traces (a separate SQLite file). |
+| `WEB_DIST` | (none) | When set, the API also serves this built web app (e.g. `apps/web/dist`), as it does in Docker. |
 
 For UI work without the API, `VITE_MOCK_API=1 pnpm dev` runs the web app on built-in sample data.
+
+## Deploying to a server
+
+One small VPS (1 vCPU and 2 GB RAM is plenty) runs Enzyme in Docker behind
+[Caddy](https://caddyserver.com), which handles HTTPS and a password prompt. In production the API
+serves the built web app itself, so Enzyme is a single container. The database stays in a Docker
+volume when the container is rebuilt.
+
+Caddy runs as its own small project in [`deploy/caddy`](deploy/caddy), so other apps on the same
+server can sit behind it. Each app gets one block in the Caddyfile.
+
+**1. Server and DNS.** Create an Ubuntu VPS and point a DNS `A` record (e.g.
+`enzyme.example.com`) at its IP address. Then, as root on the server:
+
+```sh
+curl -fsSL https://get.docker.com | sh
+ufw allow OpenSSH && ufw allow 80 && ufw allow 443 && ufw --force enable
+```
+
+**2. Caddy.** It creates the shared `web` network that apps join.
+
+```sh
+git clone https://github.com/vytasgavelis/enzyme.git /srv/enzyme
+cp -r /srv/enzyme/deploy/caddy /srv/caddy
+cd /srv/caddy
+cp Caddyfile.example Caddyfile
+docker run --rm caddy:2 caddy hash-password --plaintext 'pick-a-password'
+# edit Caddyfile: your domain, and the hash from the line above
+docker compose up -d
+```
+
+Use a password in the Caddyfile: Enzyme has no login of its own, and every visitor spends your
+model quota.
+
+**3. Enzyme.**
+
+```sh
+cd /srv/enzyme
+cp .env.example .env    # set GOOGLE_GENERATIVE_AI_API_KEY; the paths and ports in it are ignored here
+docker compose up -d --build
+docker compose exec enzyme apps/server/node_modules/.bin/tsx apps/server/src/scripts/seed.ts   # optional
+```
+
+Open `https://enzyme.example.com`. The first visit takes a few seconds while Caddy gets the
+certificate.
+
+**Updating:** `git pull && docker compose up -d --build` in `/srv/enzyme`. **Logs:**
+`docker compose logs -f enzyme`. **Backup:** stop the app and copy the volume, e.g.
+`docker compose stop enzyme && docker run --rm -v enzyme_enzyme-data:/data -v "$PWD":/backup alpine tar czf /backup/enzyme-data.tgz -C /data . && docker compose start enzyme`.
 
 ## Scripts
 

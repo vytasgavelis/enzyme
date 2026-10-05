@@ -1,0 +1,26 @@
+# Enzyme on a server, behind the shared Caddy in deploy/caddy (see "Deploying to a server" in
+# the README). Run from the repo root: docker compose up -d --build
+services:
+  enzyme:
+    build: .
+    restart: unless-stopped
+    # GOOGLE_GENERATIVE_AI_API_KEY and ENZYME_MODEL; copy .env.example to .env
+    env_file: .env
+    # These win over .env, whose paths are for running from a checkout
+    environment:
+      PORT: "3210"
+      WEB_DIST: apps/web/dist
+      DATABASE_PATH: /data/enzyme.db
+      TRACES_PATH: /data/mastra.db
+    volumes:
+      - enzyme-data:/data
+    # Not published on the host: Caddy reaches it as enzyme:3210 on the shared network
+    networks:
+      - web
+
+volumes:
+  enzyme-data:
+
+networks:
+  web:
+    external: true
